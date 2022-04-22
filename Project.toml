@@ -5,10 +5,13 @@ desc = "LAR, the Linear Algebraic Representation for Solid Modeling."
 version = "1.0.0"
 
 [deps]
+ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
 Conda = "8f4d0f93-b110-5947-807f-2305c1781a2d"
 DataStructures = "864edb3b-99cc-5e75-8d2d-829cb0a9cfe8"
 Distributed = "8ba89e20-285c-5b6f-9357-94700520ee1b"
 IntervalTrees = "524e6230-43b7-53ae-be76-1e9e4d08d11b"
+JLD = "4138dd39-2aa7-5051-a626-17a0bb65d9c8"
+LightGraphs = "093fc24a-ae57-5d10-9952-331d41423f4d"
 LinearAlgebra = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 LinearAlgebraicRepresentation = "95167b0c-186a-594b-a231-52369c6de044"
 NearestNeighbors = "b8a86587-4115-5ab1-83bc-aa920d37bbce"

@@ -77,7 +77,7 @@ function merge_vertices(V::Lar.Points, EV::Lar.ChainOp, FE::Lar.ChainOp, err=1e-
        end
    end
    nV = V[setdiff(collect(1:vertsnum), todelete), :]
-   V[30,:] = V[26,:] #<<<<<<<<<<<<<<<<<< TEST
+   # V[30,:] = V[26,:] #<<<<<<<<<<<<<<<<<< TEST
 
    # translate edges to take congruence into account
    edges = Array{Tuple{Int, Int}, 1}(undef, edgenum)
@@ -225,7 +225,8 @@ end
 function spatial_arrangement_2(
 		rV::Lar.Points,
 		rcopEV::Lar.ChainOp,
-		rcopFE::Lar.ChainOp, multiproc::Bool=false)
+		rcopFE::Lar.ChainOp, 
+        multiproc::Bool=false)
 
 	rcopCF = Lar.build_copFC(rV, rcopEV, rcopFE)  ######
 	#rcopCF = minimal_3cycles(rV, rcopEV, rcopFE)
@@ -250,7 +251,8 @@ The function returns the full arranged complex as a list of vertices V and a cha
 function spatial_arrangement(
 		V::Lar.Points, # by rows
 		copEV::Lar.ChainOp,
-		copFE::Lar.ChainOp, multiproc::Bool=false)
+		copFE::Lar.ChainOp, 
+        multiproc::Bool=false)
 
 	# face subdivision
 	rV, rcopEV, rcopFE = Lar.Arrangement.spatial_arrangement_1( V,copEV,copFE,multiproc )
