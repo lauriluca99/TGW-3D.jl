@@ -48,12 +48,12 @@ EV, FE, CF.
 Si occupa del processo di frammentazione delle facce per l’utilizzo del
 planar arrangement.
 
-<u>compute\_FV:</u>
+a) <u>compute\_FV:</u>
 
 Ritorna l’array FV di tipo Lar.Cells dal prodotto di due array sparsi in
 input di tipo Lar.ChainOp.
 
-<u>Spaceindex:</u>
+b) <u>Spaceindex:</u>
 
 Dato un modello geometrico, calcola le intersezioni tra i bounding box.
 Nello specifico, la funzione calcola le 1-celle e il loro bounding box
@@ -67,17 +67,17 @@ ottengono le intersezioni effettive tra bounding box. La funzione esegue
 lo stesso procedimento sulla coordinata *z* se presente. Infine, si
 eliminano le intersezioni di ogni bounding box con loro stessi.
 
-<u>frag\_face:</u>
+c) <u>frag\_face:</u>
 
 Effettua la trasformazione in 2D delle facce fornite come parametro
 sigma, dopo di che ogni faccia sigma si interseca con le facce presenti
 in sp\_index sempre fornito come parametro della funzione.
 
-<u>skel\_merge:</u>
+d) <u>skel\_merge:</u>
 
 effettua l’unione di due scheletri che possono avere 1 o 2 dimensioni.
 
-<u>merge\_vertices:</u>
+e) <u>merge\_vertices:</u>
 
 effettua l’unione dei vertici, dei lati e delle facce vicine.
 
@@ -86,28 +86,28 @@ effettua l’unione dei vertici, dei lati e delle facce vicine.
 calcola le componenti biconnesse del grafo EV rappresenato da bordi,
 ovvero coppie di vertici.
 
-<u>an\_edge:</u>
+a) <u>an\_edge:</u>
 
 funzione che, dato in input un punto, prende un lato connesso ad esso.
 
-<u>get\_head:</u>
+b) <u>get\_head:</u>
 
 funzione che, dato in input un lato e la coda, fornisce la testa
 
-<u>v\_to\_vi:</u>
+c) <u>v\_to\_vi:</u>
 
 funzione che, dato un vertice in input, ritorna falso se la prima
 occerrenza della matrice è pari a 0 oppure ritorna il valore trovato.
 
-<u>push!:</u>
+d) <u>push!:</u>
 
 inserisce uno o più oggetti nella matrice.
 
-<u>pop!:</u>
+e) <u>pop!:</u>
 
 rimuove l’ultimo oggetto nella matrice e lo ritorna.
 
-<u>sort:</u>
+f) <u>sort:</u>
 
 ordina la matrice e ne ritorna una copia.
 
@@ -116,12 +116,12 @@ ordina la matrice e ne ritorna una copia.
 Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 3D.
 
-<u>minimal\_3cycles:</u>
+a) <u>minimal\_3cycles:</u>
 
 funzione che riporta i parametri dati in input in 3 dimensioni e calcola
 le nuove celle adiacenti per estendere i bordi della figura geometrica.
 Infine ritorna la matrice sparsa tridimensionale.
 
-<u>build\_copFC:</u>
+b) <u>build\_copFC:</u>
 
 funzione alternativa alla precedente.
