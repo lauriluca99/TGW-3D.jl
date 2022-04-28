@@ -13,7 +13,7 @@ modello matematico appropriato per tutte le strutture topologiche che è
  un complesso co-chain formato da collezioni di matrici sparse.
 
 Un complesso chain consiste in una sequenza di moduli dove la singola
-immagine di ognuno è contenuta nel nucleo della successiva. (successivo
+immagine di ognuno è contenuta nel nucleo del successivo. (successivo
 conosce precedente)
 
 . . . <-- A0 <-- A1 <-- A2 <-- A3 <-- A4 <-- . . .
