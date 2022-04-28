@@ -16,11 +16,11 @@ Un complesso chain consiste in una sequenza di moduli dove la singola
 immagine di ognuno è contenuta nel nucleo della successiva. (successivo
 conosce precedente)
 
-. . . A0 A1 A2 A3 A4 . . .
+. . . <-- A0 <-- A1 <-- A2 <-- A3 <-- A4 <-- . . .
 
 Un complesso co-chain è la stessa cosa ma con direzioni opposte.
 
-. . . A0 A1 A2 A3 A4 . . .
+. . . --> A0 --> A1 --> A2 --> A3 --> A4 --> . . .
 
 TGW-3D:
 
