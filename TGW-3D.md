@@ -8,9 +8,9 @@ operazioni algebriche lineari, la più comune è la moltiplicazione sparsa
 matrice/vettore.
 
 Scegliamo LAR in quanto l’aumento della complessità dei dati geometrici
-e dei modelli topologici richiedono una migliore rappresentazione e un
-modello matematico appropriato per tutte le strutture topologiche è
-proprio un complesso co-chain formato da collezioni di matrici sparse.
+e dei modelli topologici richiede una migliore rappresentazione e un
+modello matematico appropriato per tutte le strutture topologiche che è
+ un complesso co-chain formato da collezioni di matrici sparse.
 
 Un complesso chain consiste in una sequenza di moduli dove la singola
 immagine di ognuno è contenuta nel nucleo della successiva. (successivo
