@@ -1,7 +1,0 @@
-{
-  "entryFilePath": "src\\extensions.ts",
-  "alias": {},
-  "resolveExtensions": [
-    ".jl"
-  ]
-}
