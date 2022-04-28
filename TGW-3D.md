@@ -25,7 +25,7 @@ Un complesso co-chain è la stessa cosa ma con direzioni opposte.
 TGW-3D:
 
 L’algoritmo Topological Gift Wrapping ha come obiettivo il calcolare le
-d-celle di una partizione di spazio generate da loro partendop da un
+d-celle di una partizione di spazio generate da loro partendo da un
 oggetto geometrico d-1 dimensionale.
 
 TGW prende una matrice sparsa di dimensione d-1 in input e produce in
