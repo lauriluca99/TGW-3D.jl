@@ -93,11 +93,11 @@ planar arrangement.
 
 4.  <u>skel\_merge:</u>
 
-effettua l’unione di due scheletri che possono avere 1 o 2 dimensioni.
+> effettua l’unione di due scheletri che possono avere 1 o 2 dimensioni.
 
 5.  <u>merge\_vertices:</u>
 
-effettua l’unione dei vertici, dei lati e delle facce vicine.
+> effettua l’unione dei vertici, dei lati e delle facce vicine.
 
 *BICONNECTED\_COMPONENTS:*
 
@@ -106,11 +106,11 @@ ovvero coppie di vertici.
 
 1.  <u>an\_edge:</u>
 
-funzione che, dato in input un punto, prende un lato connesso ad esso.
+> funzione che, dato in input un punto, prende un lato connesso ad esso.
 
 2.  <u>get\_head:</u>
 
-funzione che, dato in input un lato e la coda, fornisce la testa
+> funzione che, dato in input un lato e la coda, fornisce la testa
 
 3.  <u>v\_to\_vi:</u>
 
@@ -119,15 +119,15 @@ funzione che, dato in input un lato e la coda, fornisce la testa
 
 4.  <u>push!:</u>
 
-inserisce uno o più oggetti nella matrice.
+> inserisce uno o più oggetti nella matrice.
 
 5.  <u>pop!:</u>
 
-rimuove l’ultimo oggetto nella matrice e lo ritorna.
+> rimuove l’ultimo oggetto nella matrice e lo ritorna.
 
 6.  <u>sort:</u>
 
-ordina la matrice e ne ritorna una copia.
+> ordina la matrice e ne ritorna una copia.
 
 *SPATIAL\_ARRANGEMENT\_2:*
 
@@ -142,4 +142,4 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 
 2.  <u>build\_copFC:</u>
 
-funzione alternativa alla precedente.
+> funzione alternativa alla precedente.
