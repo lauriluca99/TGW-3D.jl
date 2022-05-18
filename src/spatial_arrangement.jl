@@ -46,7 +46,7 @@ function frag_face(V, EV, FE, sp_idx, sigma)
     # computation of 2D arrangement of sigma face
     sV = sV[:, 1:2]
     nV, nEV, nFE = planar_arrangement(sV, sEV, sparsevec(ones(Int8, length(sigmavs))))
-    if nV == nothing ## not possible !! ... (each original face maps to its decomposition)
+    if nV === nothing ## not possible !! ... (each original face maps to its decomposition)
         return [], spzeros(Int8, 0,0), spzeros(Int8, 0,0)
     end
     nvsize = size(nV, 1)
