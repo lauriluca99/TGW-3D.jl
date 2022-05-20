@@ -248,6 +248,7 @@ esecuzione.
 ![Benchmark della funzione originale](images/media/image8.png)
 
 Notiamo in seguito come vengono modificati i tempi dopo l'ottimizzazione.
+
 ![Benchmark della funzione modificata](images/media/image9.png)
 
 
