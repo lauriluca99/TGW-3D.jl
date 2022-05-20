@@ -241,5 +241,5 @@ inferiore di circa 20% dalla versione originale.
 Anche per quanto riguarda questa funzione abbiamo effettuato un controllo su i vari tipi di variabili assegnati utilizzando 
 la macro `@code_warntype`, questa volta però non erano presenti variabili di tipo `Any` che ci avrebbero dunque destabilizzato
 i tipi della funzione. Per ottimizzare quest’ ultima abbiamo, un’altra volta, introdotto opportunamente davanti ai cicli *for* 
-la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso di avere un ottimizzazione del 10% sul tempo di
+la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso di avere un' ottimizzazione del 10% sul tempo di
 esecuzione.
