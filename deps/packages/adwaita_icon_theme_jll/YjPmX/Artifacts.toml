@@ -1,6 +1,0 @@
-[adwaita_icon_theme]
-git-tree-sha1 = "65eca7c48dea1e32203b205613441ce9506045b4"
-
-    [[adwaita_icon_theme.download]]
-    sha256 = "f50f3c85710f7dfbd6959bfaa6cc3a940195cd09dadddefb3b5ae9a2f97adad3"
-    url = "https://github.com/JuliaBinaryWrappers/adwaita_icon_theme_jll.jl/releases/download/adwaita_icon_theme-v3.33.92+4/adwaita_icon_theme.v3.33.92.any.tar.gz"

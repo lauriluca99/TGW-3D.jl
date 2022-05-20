@@ -1,5 +1,0 @@
-*.jl.*.cov
-*.jl.mem
-deps/Manifest.toml
-test/Manifest.toml
-LocalPreferences.toml

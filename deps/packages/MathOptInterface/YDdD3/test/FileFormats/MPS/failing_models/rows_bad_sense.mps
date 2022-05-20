@@ -1,5 +1,0 @@
-NAME
-ROWS
- X  c
-COLUMNS
-ENDATA

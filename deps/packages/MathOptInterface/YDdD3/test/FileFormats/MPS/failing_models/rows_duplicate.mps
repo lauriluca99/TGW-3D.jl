@@ -1,6 +1,0 @@
-NAME
-ROWS
- N  c
- G  c
-COLUMNS
-ENDATA

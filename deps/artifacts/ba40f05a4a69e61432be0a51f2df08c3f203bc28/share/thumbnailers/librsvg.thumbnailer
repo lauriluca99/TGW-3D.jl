@@ -1,4 +1,0 @@
-[Thumbnailer Entry]
-TryExec=/workspace/destdir/bin/gdk-pixbuf-thumbnailer
-Exec=/workspace/destdir/bin/gdk-pixbuf-thumbnailer -s %s %u %o
-MimeType=image/svg+xml;image/svg+xml-compressed;

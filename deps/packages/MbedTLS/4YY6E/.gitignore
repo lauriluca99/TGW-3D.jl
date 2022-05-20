@@ -1,8 +1,0 @@
-*.jl.cov
-*.jl.*.cov
-*.jl.mem
-deps/downloads
-deps/src
-deps/deps.jl
-deps/usr
-deps/build.log

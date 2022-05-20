@@ -1,8 +1,0 @@
-*.cov
-*.mem
-*.swp
-*.ipynb_checkpoints/
-benchmarks/*.jld
-benchmarks/*.md
-Manifest.toml
-

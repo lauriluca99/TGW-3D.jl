@@ -1,6 +1,0 @@
-# Reference
-
-```@docs
-PlainTextPrinter
-HTMLPrinter
-```

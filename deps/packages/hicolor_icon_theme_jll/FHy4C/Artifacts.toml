@@ -1,6 +1,0 @@
-[hicolor_icon_theme]
-git-tree-sha1 = "eb6ac7b2d830e5142ad5e345e54fb33dc7aafd6c"
-
-    [[hicolor_icon_theme.download]]
-    sha256 = "3e0af19a82896acda1bfbba7c5139c0d4c613370990c8270dad7021179e451b2"
-    url = "https://github.com/JuliaBinaryWrappers/hicolor_icon_theme_jll.jl/releases/download/hicolor_icon_theme-v0.17.0+2/hicolor_icon_theme.v0.17.0.any.tar.gz"
