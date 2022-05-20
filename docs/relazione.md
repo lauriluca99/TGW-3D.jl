@@ -243,3 +243,11 @@ la macro `@code_warntype`, questa volta però non erano presenti variabili di ti
 i tipi della funzione. Per ottimizzare quest’ ultima abbiamo, un’altra volta, introdotto opportunamente davanti ai cicli *for* 
 la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso di avere un' ottimizzazione del 10% sul tempo di
 esecuzione.
+
+
+![Benchmark della funzione originale](images/media/image8.png)
+
+![Benchmark della funzione modificata](images/media/image9.png)
+
+
+
