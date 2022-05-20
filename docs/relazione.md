@@ -5,7 +5,7 @@ Membri del team:
 Luca Maria Lauricella e Valerio Marini
 
 Repository del progetto:
-https://github.com/lauriluca99/LAR-TGW-3D
+https://github.com/lauriluca99/TGW-3D.jl
 
 # Introduzione Linear Algebraic Rappresentation:
 
