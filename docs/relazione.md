@@ -252,4 +252,4 @@ Notiamo in seguito come vengono modificati i tempi dopo l'ottimizzazione.
 ![Benchmark della funzione modificata](images/media/image9.png)
 
 
-
+# Studio definitivo
