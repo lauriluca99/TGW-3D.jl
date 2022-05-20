@@ -1,0 +1,98 @@
+name: CI
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+  workflow_dispatch:
+jobs:
+  test:
+    name: Julia ${{ matrix.version }} - ${{ matrix.os }} - ${{ matrix.arch }} - ${{ matrix.libLLVMExtra }} libLLVMExtra - assertions=${{ matrix.assertions }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        version: ['1.6', '1.7', '^1.8.0-beta3', 'nightly']
+        os: [ubuntu-latest, macOS-latest, windows-latest]
+        arch: [x64]
+        libLLVMExtra: [packaged]
+        assertions: [false]
+        include:
+          # special test with a locally-built libLLVMExtra
+          - os: ubuntu-latest
+            arch: x64
+            libLLVMExtra: local
+            version: '1.7'
+            assertions: true
+          # special test with LLVM assertions enabled
+          # TODO: enable this across all versions
+          #       (needs LLVM.jl fixes, and julia-actions/setup-julia support)
+          - os: ubuntu-latest
+            arch: x64
+            libLLVMExtra: packaged
+            version: '1.7'
+            assertions: true
+          - os: ubuntu-latest
+            arch: x64
+            libLLVMExtra: packaged
+            version: '1.8'
+            assertions: true
+    steps:
+      - uses: actions/checkout@v2
+      # install Julia
+      - uses: julia-actions/setup-julia@v1
+        if: ${{ ! matrix.assertions }}
+        with:
+          version: ${{ matrix.version }}
+          arch: ${{ matrix.arch }}
+      - name: Download Julia with assertions
+        if: ${{ matrix.assertions }}
+        env:
+          version: ${{ matrix.version }}
+          arch: ${{ matrix.arch }}
+        run: |
+          wget https://julialangnightlies.s3.amazonaws.com/assert_bin/linux/$arch/$version/julia-latest-linux64.tar.gz
+          tar -xvzf julia-latest-linux64.tar.gz
+          rm -rf julia-latest-linux64.tar.gz
+          echo $PWD/julia-*/bin >> $GITHUB_PATH
+      # prepare
+      - uses: actions/cache@v1
+        env:
+          cache-name: cache-artifacts
+        with:
+          path: ~/.julia/artifacts
+          key: ${{ runner.os }}-test-${{ env.cache-name }}-${{ hashFiles('**/Project.toml') }}
+          restore-keys: |
+            ${{ runner.os }}-test-${{ env.cache-name }}-
+            ${{ runner.os }}-test-
+            ${{ runner.os }}-
+      - uses: julia-actions/julia-buildpkg@v1
+      - name: Build libLLVMExtra
+        if: ${{ matrix.libLLVMExtra == 'local' }}
+        run: |
+          julia --project=deps -e 'using Pkg; Pkg.instantiate()'
+          julia --project=deps deps/build_local.jl
+      # test
+      - name: Run tests
+        run: |
+          julia --project -e 'using Pkg; Pkg.test(; coverage=true, julia_args=`-g2`)'
+      # process results
+      - uses: julia-actions/julia-processcoverage@v1
+      - uses: codecov/codecov-action@v1
+        with:
+          file: lcov.info
+  docs:
+    name: Documentation
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: julia-actions/setup-julia@latest
+        with:
+          version: '1.6'
+      - name: Install dependencies
+        run: julia --project=docs/ -e 'using Pkg; Pkg.develop(PackageSpec(path=pwd())); Pkg.instantiate()'
+      - name: Build and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DOCUMENTER_KEY: ${{ secrets.DOCUMENTER_KEY }}
+        run: julia --project=docs/ docs/make.jl

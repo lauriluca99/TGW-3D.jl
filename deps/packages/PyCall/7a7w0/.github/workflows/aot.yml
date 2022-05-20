@@ -1,0 +1,54 @@
+name: AOT test
+
+on:
+  push:
+    branches:
+      - master
+    tags: '*'
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test-aot:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os:
+          - ubuntu-latest
+        architecture: [x64]
+        python-version: ['3.x']
+        julia-version:
+          - '1'
+          - '1.6'
+          # - 'nightly'  # TODO: reenable
+      fail-fast: false
+    env:
+      PYTHON: python${{ matrix.python-version }}
+    name: Test AOT
+      Julia ${{ matrix.julia-version }}
+      Python ${{ matrix.python-version }}
+      ${{ matrix.os }} ${{ matrix.architecture }}
+    steps:
+      - uses: actions/checkout@v1
+      - name: Setup python
+        uses: actions/setup-python@v1
+        with:
+          python-version: ${{ matrix.python-version }}
+          architecture: ${{ matrix.architecture }}
+      - run: python --version
+      - run: python -m pip install --user numpy
+      - name: Install libpython2.7 for `find_libpython` test
+        run: sudo apt-get install python2.7-dev
+        if: ${{ matrix.python-version != '2.7' && matrix.os == 'ubuntu-latest' }}
+      - name: Setup julia
+        uses: julia-actions/setup-julia@v1
+        with:
+          version: ${{ matrix.julia-version }}
+          arch: ${{ matrix.architecture }}
+          show-versioninfo: true
+
+      - run: julia -e 'using Pkg; pkg"add PackageCompiler@v1"'
+
+      - run: aot/compile.jl
+      - run: aot/assert_has_pycall.jl
+      - run: aot/runtests.sh

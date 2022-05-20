@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Recommendations for Applications: Librsvg Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Librsvg Reference Manual">
+<link rel="up" href="rsvg.html" title="Part I. API Reference">
+<link rel="prev" href="ch01s03.html" title="Example: simple loading and rendering">
+<link rel="next" href="recommendations-assets.html" title="Recommendations for applications with SVG assets">
+<meta name="generator" content="GTK-Doc V1.32 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts"></td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="rsvg.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="ch01s03.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="recommendations-assets.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="chapter">
+<div class="titlepage"><div><div><h2 class="title">
+<a name="id-1.2.4"></a>Recommendations for Applications</h2></div></div></div>
+<div class="toc"><dl class="toc">
+<dt><span class="section"><a href="ch02.html#sizing">How sizing works in SVG</a></span></dt>
+<dd><dl><dt><span class="section"><a href="ch02.html#id-1.2.4.2.7">How librsvg computes document sizes</a></span></dt></dl></dd>
+<dt><span class="section"><a href="recommendations-assets.html">Recommendations for applications with SVG assets</a></span></dt>
+<dd><dl><dt><span class="section"><a href="recommendations-assets.html#id-1.2.4.3.5">Injecting a user stylesheet</a></span></dt></dl></dd>
+</dl></div>
+<div class="section">
+<div class="titlepage"><div><div><h2 class="title" style="clear: both">
+<a name="sizing"></a>How sizing works in SVG</h2></div></div></div>
+<p>
+      SVG documents are <span class="emphasis"><em>scalable</em></span>.  The
+      conventional way to position SVG documents, which comes from the
+      web platform, is to consider a <span class="emphasis"><em>viewport</em></span> in
+      which to place the SVG document — that is, a rectangular region
+      to where the SVG will be scaled and positioned.
+    </p>
+<p>
+      SVG renderers are supposed to use the viewport provided by the
+      application, plus the SVG document's <code class="literal">width</code>,
+      <code class="literal">height</code>, and <code class="literal">viewBox</code>
+      attributes, to compute the position and size for the rendered
+      document.
+    </p>
+<p>
+      Ideally, the toplevel <code class="literal">&lt;svg&gt;</code> element of
+      an SVG document will contain <code class="literal">width</code> and
+      <code class="literal">height</code> attributes, that indicate the
+      proportions and "natural size" of the document.  When those
+      attributes are present, the SVG renderer can unambiguously
+      figure out the natural aspect ratio of the document, and can
+      also suggest a natural size for the document.  For example,
+      <code class="literal">&lt;svg width="100px" height="50px"&gt;</code> has
+      a natural size of 100x50 pixels, but it could also be rendered
+      scaled at 200x100 pixels.  Since SVGs are scalable, it is not
+      mandatory to actually use its natural size; it can be scaled
+      arbitrarily.  Of course, it is up to each application how an SVG
+      document will be scaled: a web browser would want to consider
+      the semantics of embedding images in HTML, which may be
+      different from a GUI toolkit loading SVG assets with hard-coded
+      sizes.
+    </p>
+<p>
+      If an SVG document's toplevel <code class="literal">&lt;svg&gt;</code>
+      element does not have <code class="literal">width</code> and
+      <code class="literal">height</code> attributes, then the SVG renderer can
+      try to figure out the document's aspect ratio from the
+      <code class="literal">viewBox</code> attribute.  For example, there is no natural size for <code class="literal">&lt;svg viewBox="0 0 100 50"&gt;</code>, but it has a 2:1 (or 100:50) aspect ratio, so it is twice as wide as it is tall.
+    </p>
+<p>
+      If there is no <code class="literal">viewBox</code> either, then the SVG
+      renderer cannot easily figure out the natural size of the
+      document.  It can either set a 1:1 scaling matrix within the
+      application's viewport and render the SVG there, or it can
+      actually try to compute the size of each object in the SVG
+      document to figure out the size.  The latter is a moderately
+      expensive operation, and can be avoided by having the SVG
+      document specify <code class="literal">width</code> and
+      <code class="literal">height</code> attributes.  Try not to have SVG
+      documents that just start with <code class="literal">&lt;svg&gt;</code>
+      without any of those attributes.
+    </p>
+<div class="section">
+<div class="titlepage"><div><div><h3 class="title">
+<a name="id-1.2.4.2.7"></a>How librsvg computes document sizes</h3></div></div></div>
+<p>
+	Librsvg looks for the <code class="literal">width</code> and
+	<code class="literal">height</code> attributes in the toplevel
+	<code class="literal">&lt;svg&gt;</code> element.  If they are present,
+	librsvg uses them for the "natural" size of the SVG, and this
+	also defines the aspect ratio.  The size has actual units
+	(pixels, centimeters, etc.)  depending on the value of the
+	<code class="literal">width</code> and <code class="literal">height</code>
+	attributes.
+      </p>
+<p>
+	If there are no <code class="literal">width</code> or
+	<code class="literal">height</code> attributes in the toplevel
+	<code class="literal">&lt;svg&gt;</code>, librsvg looks for the
+	<code class="literal">viewBox</code> attribute.  If present, this
+	defines the aspect ratio and a "natural" size in pixels.
+      </p>
+<p>
+	In both cases above (with
+	<code class="literal">width</code>/<code class="literal">height</code> and/or
+	<code class="literal">viewBox</code>), librsvg can determine the
+	"natural" size and aspect ratio of an SVG document immediately
+	after loading.
+      </p>
+<p>
+	Otherwise, if none of those attributes are present in the
+	toplevel <code class="literal">&lt;svg&gt;</code> element, librsvg must
+	actually compute the coverage of all the graphical elements in
+	the SVG.  This is a moderately expensive operation, and
+	depends on the complexity of the document.
+      </p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.32</div>
+</body>
+</html>

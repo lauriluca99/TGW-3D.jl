@@ -1,0 +1,17 @@
+name = "xkbcommon_jll"
+uuid = "d8fb68d0-12a3-5cfd-a85a-d49703b185fd"
+version = "0.9.1+5"
+
+[deps]
+Xorg_xkeyboard_config_jll = "33bec58e-1273-512f-9401-5d533626f822"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Xorg_libxcb_jll = "c7cfdc94-dc32-55de-ac96-5a1b8d977c5b"
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+Wayland_jll = "a2964d1f-97da-50d4-b82a-358c7fce9d89"
+Wayland_protocols_jll = "2381bf8a-dfd0-557d-9999-79630e7b1b91"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+
+[compat]
+JLLWrappers = "1.1.0"
+julia = "1.0"

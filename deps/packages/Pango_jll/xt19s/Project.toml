@@ -1,0 +1,22 @@
+name = "Pango_jll"
+uuid = "36c8627f-9965-5494-a995-c6b170f724f3"
+version = "1.50.3+0"
+
+[deps]
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Cairo_jll = "83423d85-b0ee-5818-9007-b63ccbeb887a"
+FreeType2_jll = "d7e528f0-a631-5988-bf34-fe36492bcfd7"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Glib_jll = "7746bdde-850d-59dc-9ae8-88ece973131d"
+HarfBuzz_jll = "2e76f6c2-a576-52d4-95c1-20adfe4de566"
+Fontconfig_jll = "a3f928ae-7b40-5064-980b-68af3947d34b"
+FriBidi_jll = "559328eb-81f9-559d-9380-de523a88c83c"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+
+[compat]
+JLLWrappers = "1.2.0"
+julia = "1.6"
+Cairo_jll = "1.16.1"
+Glib_jll = "2.68.1"
+HarfBuzz_jll = "2.8.1"

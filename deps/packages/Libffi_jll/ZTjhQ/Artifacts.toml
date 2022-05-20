@@ -1,0 +1,143 @@
+[[Libffi]]
+arch = "aarch64"
+git-tree-sha1 = "5b338c8fa90c05e6faea86e54d2996cca76cfbbe"
+os = "macos"
+
+    [[Libffi.download]]
+    sha256 = "ca0155259396ecf3077bd721e15f8f5b7ef0ddc984539467dd814b79688581f1"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.aarch64-apple-darwin.tar.gz"
+[[Libffi]]
+arch = "aarch64"
+git-tree-sha1 = "1ee86c7ed7cb6b14cac99cbdfd65e86a5d12ebed"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "1d08310cd303e05e6439d3c4c582d065b7d40355cd4fa0cfbf259843112d2689"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.aarch64-linux-gnu.tar.gz"
+[[Libffi]]
+arch = "aarch64"
+git-tree-sha1 = "247608c68c870403f8abff357330090c2313e5e5"
+libc = "musl"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "c88452e08a499d270cce1a1c417a37eb7fa74f7790d6265652a813586fbf94c5"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.aarch64-linux-musl.tar.gz"
+[[Libffi]]
+arch = "armv6l"
+call_abi = "eabihf"
+git-tree-sha1 = "7a5ac6056272521f250c2421759d0c33fe013eb1"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "5dda5963ed321fa60d9a3a801d7405d6e635734072f6ad51a4c37080c67f3f3c"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.armv6l-linux-gnueabihf.tar.gz"
+[[Libffi]]
+arch = "armv6l"
+call_abi = "eabihf"
+git-tree-sha1 = "36aea0f2494ba59f633fd090ddce9c47bf5c1a20"
+libc = "musl"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "6c2f4d7af8cb743def1455a13e7cfc736d02189543b86063d41728bd91e6c097"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.armv6l-linux-musleabihf.tar.gz"
+[[Libffi]]
+arch = "armv7l"
+call_abi = "eabihf"
+git-tree-sha1 = "e65c0686ae4e264119fb81c14797907b741323bd"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "b753a6497da64d8ee87b7a866b243b583849f1c70461acdd3955afc826b16179"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.armv7l-linux-gnueabihf.tar.gz"
+[[Libffi]]
+arch = "armv7l"
+call_abi = "eabihf"
+git-tree-sha1 = "f107519f65c81c394891743f77520dc8e4133f40"
+libc = "musl"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "3b1566c6a47c045bd954387a770f15a2468e17c30a1e4c5106d2f69c8c64220f"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.armv7l-linux-musleabihf.tar.gz"
+[[Libffi]]
+arch = "i686"
+git-tree-sha1 = "3f4b39873e4b9ba3ebc915310d1e5fac8a1f5f24"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "9636b312822cce8c19a41b4aa5fdf4ba814b3ed8c12ca7fef88fcb1184da2932"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.i686-linux-gnu.tar.gz"
+[[Libffi]]
+arch = "i686"
+git-tree-sha1 = "477a38c05be3d5c47704aa0a9857ab3041ca57a4"
+libc = "musl"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "800e23e3c9ad12c62c662ce67752123a84fba70ed8ce59e5ac4c59acc3681e49"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.i686-linux-musl.tar.gz"
+[[Libffi]]
+arch = "i686"
+git-tree-sha1 = "bfbb3dceeb6527a997fcfdb2c1b8bc56b0bcfc16"
+os = "windows"
+
+    [[Libffi.download]]
+    sha256 = "5b0c41642af414835d941f4b2f0f70ee0f2d7b2ae8e03b5136af1ef8c4f37c3a"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.i686-w64-mingw32.tar.gz"
+[[Libffi]]
+arch = "powerpc64le"
+git-tree-sha1 = "4baad1311968ea2274301cae444a127c47154131"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "363d26a0f1f2ab5fd942e2743c7a5c7164384e77e773a9203131b046512181ac"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.powerpc64le-linux-gnu.tar.gz"
+[[Libffi]]
+arch = "x86_64"
+git-tree-sha1 = "dcc1b7719d5a106fba77bbc272d231e163d15fe5"
+os = "macos"
+
+    [[Libffi.download]]
+    sha256 = "2bf1b107c95dfbe3db71c506f4ee3a27ced59a466f1fd29a01b1488332bc73f6"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.x86_64-apple-darwin.tar.gz"
+[[Libffi]]
+arch = "x86_64"
+git-tree-sha1 = "d00220164876dea2cb19993200662745eed5e2db"
+libc = "glibc"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "05e71ac9ed09bf3e5fb16ddc694dc6174a7554b4c5990e3d9502b5439ae7483d"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.x86_64-linux-gnu.tar.gz"
+[[Libffi]]
+arch = "x86_64"
+git-tree-sha1 = "b1f83eb0db965ca528c413029fae3ef612eafc42"
+libc = "musl"
+os = "linux"
+
+    [[Libffi.download]]
+    sha256 = "63062ea71317ed489d30782775cdb408d4266ac50ac3c72a8f1c4b78a3f3b8f7"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.x86_64-linux-musl.tar.gz"
+[[Libffi]]
+arch = "x86_64"
+git-tree-sha1 = "6e2cf19091b6c087e4b4be6b696dd7108a711253"
+os = "freebsd"
+
+    [[Libffi.download]]
+    sha256 = "98352e2dc62a5732563361e87ffe32a323a600e7a6fcea102f76e2aca4d29400"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.x86_64-unknown-freebsd.tar.gz"
+[[Libffi]]
+arch = "x86_64"
+git-tree-sha1 = "e5872943f1078a6397a4f4d0f760db959ec50630"
+os = "windows"
+
+    [[Libffi.download]]
+    sha256 = "2758c795a34eb2e4bbd0faab6271a1b5e2e7317fe23aecdea414f9a83b0a7e84"
+    url = "https://github.com/JuliaBinaryWrappers/Libffi_jll.jl/releases/download/Libffi-v3.2.2+1/Libffi.v3.2.2.x86_64-w64-mingw32.tar.gz"

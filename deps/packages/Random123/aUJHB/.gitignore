@@ -1,0 +1,12 @@
+*.jl.cov
+*.jl.*.cov
+*.jl.mem
+*.swp
+build/
+actual/
+*.log
+*.so
+*.dll
+/docs/site/
+/deps/aes-ni
+Manifest.toml

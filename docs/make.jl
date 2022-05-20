@@ -1,15 +1,21 @@
 if Base.HOME_PROJECT[] !== nothing
-# JuliaLang/julia/pull/28625
-Base.HOME_PROJECT[] = abspath(Base.HOME_PROJECT[])
+    # JuliaLang/julia/pull/28625
+    Base.HOME_PROJECT[] = abspath(Base.HOME_PROJECT[])
 end
-using Documenter, TGW-3D
+import Pkg
+Pkg.add("Documenter")
+
+using Documenter, using TGW3D
+
 makedocs(
-format = Documenter.HTML(),
-modules = [TGW-3D],
-sitename = "TGW-3D",
-pages = [
-"README.md",
-"API Reference" => "index.md"
-]
+    format = Documenter.HTML(),
+    modules = [TGW3D],
+    sitename = "TGW3D",
+    pages = [
+        "README.md",
+        "API Reference" => "index.md"
+        ]
+    )
+deploydocs(
+    repo   = "github.com/lauriluca99/TGW-3D.jl.git",
 )
-deploydocs( repo   = "github.com/lauriluca99/TGW-3D.jl.git", )

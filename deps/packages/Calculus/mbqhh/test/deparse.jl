@@ -1,0 +1,8 @@
+@test isequal(deparse(:(cos(x) + sin(x))), "cos(x) + sin(x)")
+@test isequal(deparse(:(cos(x) + sin(x) + exp(-x))), "cos(x) + sin(x) + exp(-x)")
+@test isequal(deparse(Meta.parse("x+y*z")), "x + y * z")
+@test isequal(deparse(Meta.parse("(x+y)*z")), "(x + y) * z")
+@test isequal(deparse(Meta.parse("1/(x/y)")), "1 / (x / y)")
+@test isequal(deparse(Meta.parse("1/(x*y)")), "1 / (x * y)")
+@test isequal(deparse(Meta.parse("z^(x+y)")), "z ^ (x + y)")
+@test isequal(deparse(Meta.parse("z^(x*y)")), "z ^ (x * y)")

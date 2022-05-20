@@ -1,0 +1,143 @@
+[[Pixman]]
+arch = "aarch64"
+git-tree-sha1 = "086c1b4e2156bba1b383b684839e78fe75e6d546"
+os = "macos"
+
+    [[Pixman.download]]
+    sha256 = "e2379fb963720f42dc38bd94ac0b14647227e188cb3d7cc751907d0301eed41e"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.aarch64-apple-darwin.tar.gz"
+[[Pixman]]
+arch = "aarch64"
+git-tree-sha1 = "b5b0c4a72a661e072cd415233e9065c1b6c1b883"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "386e9eed8e42a79d66cce8bbe6cf299254c0ef9888d229e92832f8704b356693"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.aarch64-linux-gnu.tar.gz"
+[[Pixman]]
+arch = "aarch64"
+git-tree-sha1 = "1fa8d9f3595c98980c0c7451ca9f2c3c5d7a7330"
+libc = "musl"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "19865b3fde22ccb359d0f6d4f97f7e56f329891aae0f9d5dc5096f1508df49c8"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.aarch64-linux-musl.tar.gz"
+[[Pixman]]
+arch = "armv6l"
+call_abi = "eabihf"
+git-tree-sha1 = "91358f39ca95d98534485a2cc90cefa7373fa225"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "e7bd43beced38a4180d5b261ecbf59fd0cc76ec9aaa57789d7a685074a541774"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.armv6l-linux-gnueabihf.tar.gz"
+[[Pixman]]
+arch = "armv6l"
+call_abi = "eabihf"
+git-tree-sha1 = "0164f8acc808166b2b19430d399e08e371231c96"
+libc = "musl"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "3e8699765092ab400a82634de8e69525480bd7fc44f63109a6a086848e04a6dc"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.armv6l-linux-musleabihf.tar.gz"
+[[Pixman]]
+arch = "armv7l"
+call_abi = "eabihf"
+git-tree-sha1 = "8673f4732518a388407aa51a28b3f1eeca6be633"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "7f5e180b16ee417a9a847ea18030280929c0e2141dcc03847a5b0da0d1aad2bc"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.armv7l-linux-gnueabihf.tar.gz"
+[[Pixman]]
+arch = "armv7l"
+call_abi = "eabihf"
+git-tree-sha1 = "110d85a94720e5b9b7c53510f097483a5dcc617e"
+libc = "musl"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "3cdb60ca3d46e361b868ae520f4cc45166cae07976d2d8aa0b4e4e838ed9bb63"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.armv7l-linux-musleabihf.tar.gz"
+[[Pixman]]
+arch = "i686"
+git-tree-sha1 = "f9a9ab475b73330bfc7dbbbab32cf7ed450b67c7"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "79cefca41c2a5448cf82345a102e5c706aab12adaa27d03ff9417d997f8bd786"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.i686-linux-gnu.tar.gz"
+[[Pixman]]
+arch = "i686"
+git-tree-sha1 = "de500ad53bcdc979c550b81884fee2008e6548d8"
+libc = "musl"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "e24ba54c5a091013e9c56a3b5147b71b34f1879db501d8d36c66e6c4caf75d68"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.i686-linux-musl.tar.gz"
+[[Pixman]]
+arch = "i686"
+git-tree-sha1 = "842fd4666b927710ab402771fb2c869031558be2"
+os = "windows"
+
+    [[Pixman.download]]
+    sha256 = "db0d944bd26bd0f1ac9ced4216e44cfe39ab26967fe4b35288d57b71911bd71c"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.i686-w64-mingw32.tar.gz"
+[[Pixman]]
+arch = "powerpc64le"
+git-tree-sha1 = "b28195774f33989728436a43df735df69899e71c"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "de4b4c5ad87a2c7a9775ad794c38b0ab78aca2644d3e93ce1c03927cbdb00da2"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.powerpc64le-linux-gnu.tar.gz"
+[[Pixman]]
+arch = "x86_64"
+git-tree-sha1 = "5d8d2f8a7579b33069ae2ae9079c4523d1947d13"
+os = "macos"
+
+    [[Pixman.download]]
+    sha256 = "47f5c1217829952712140033402eb277e76244e6ea90dd71232503a83ef0424d"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.x86_64-apple-darwin.tar.gz"
+[[Pixman]]
+arch = "x86_64"
+git-tree-sha1 = "f3337de0321b3370b90643d18bf63bd4ee79c991"
+libc = "glibc"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "6801be29d1a591c96af5f4bf53a3d06ca2a777a21661f704936a66a26f219bfc"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.x86_64-linux-gnu.tar.gz"
+[[Pixman]]
+arch = "x86_64"
+git-tree-sha1 = "e5f907fd33a4460978c7bf736e78469f638e0949"
+libc = "musl"
+os = "linux"
+
+    [[Pixman.download]]
+    sha256 = "97467afaa6e1e28e59e2a134316cc5e162bd87a5e1f6d22b56651ff04203b4c9"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.x86_64-linux-musl.tar.gz"
+[[Pixman]]
+arch = "x86_64"
+git-tree-sha1 = "24ad9b759ac9e98a888e5e728d8f8ab527396da8"
+os = "freebsd"
+
+    [[Pixman.download]]
+    sha256 = "409c5770a7801aba885085919628dd0f5ddaf4a7f5eb67d928a2e63895fb2072"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.x86_64-unknown-freebsd.tar.gz"
+[[Pixman]]
+arch = "x86_64"
+git-tree-sha1 = "6a5456c156251deff41ae40ac8dfbb3d8c808ffe"
+os = "windows"
+
+    [[Pixman.download]]
+    sha256 = "09087f52eb396f45588847f52598945989e5fdbb0876346a63849b551e5c0f99"
+    url = "https://github.com/JuliaBinaryWrappers/Pixman_jll.jl/releases/download/Pixman-v0.40.1+0/Pixman.v0.40.1.x86_64-w64-mingw32.tar.gz"

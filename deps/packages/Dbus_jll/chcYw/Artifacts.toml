@@ -1,0 +1,89 @@
+[[Dbus]]
+arch = "aarch64"
+git-tree-sha1 = "f7d0fcf9b6486b2a1024e8668540f0f4683d6c13"
+libc = "glibc"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "c95b03ece5bf7e61a821ab52e0cd4510ed5e8b90000cb39598f3463517e0243a"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.aarch64-linux-gnu.tar.gz"
+[[Dbus]]
+arch = "aarch64"
+git-tree-sha1 = "05360d68b357cfeb94d85100c9860c06aea20ef8"
+libc = "musl"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "bf0b43eb8558f43741c77b2d74936b97e272cb486c07d9642802a6fbbdcab545"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.aarch64-linux-musl.tar.gz"
+[[Dbus]]
+arch = "armv7l"
+git-tree-sha1 = "e58f7deb2c38d3421cbb4f085908df5b2f18e7e5"
+libc = "glibc"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "efeeca4df870c976d8cc359aa31afbb323cba139bad2fb990223958627c5224d"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.armv7l-linux-gnueabihf.tar.gz"
+[[Dbus]]
+arch = "armv7l"
+git-tree-sha1 = "2041aec76ef8cc917a1a6231ced03af22e1a2e11"
+libc = "musl"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "032e7655772e0766f4e2c42c1f58c84dd1155427483fd66210176092034a762b"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.armv7l-linux-musleabihf.tar.gz"
+[[Dbus]]
+arch = "i686"
+git-tree-sha1 = "45e28b70c3f63e7578661d275499200d7549a736"
+libc = "glibc"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "df49014fdd22d7d0ec477194f6ab5b0fa73fbbfebfa72feac361a0746970b936"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.i686-linux-gnu.tar.gz"
+[[Dbus]]
+arch = "i686"
+git-tree-sha1 = "4f7c17d92239403e993ba6c1759a7a82676d4bdc"
+libc = "musl"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "47b407bf3c9de567a5a0c1869cd73ae77513c114c164613dd832ed41031dd84b"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.i686-linux-musl.tar.gz"
+[[Dbus]]
+arch = "powerpc64le"
+git-tree-sha1 = "7f6c04db7ff2d48748b48a80fe40d4b666818715"
+libc = "glibc"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "42fbc467d439e73de786a42a2d309583df701eb6f31fed64b43c576fc115d52a"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.powerpc64le-linux-gnu.tar.gz"
+[[Dbus]]
+arch = "x86_64"
+git-tree-sha1 = "94eb32b3203f6059eeb8a2c299e4757acef6032f"
+libc = "glibc"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "ab96a8918803d03b9e850104e18858fdcb8212e9602057e0e1b15d2d4bd3dc16"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.x86_64-linux-gnu.tar.gz"
+[[Dbus]]
+arch = "x86_64"
+git-tree-sha1 = "35775324d5d6c9cafd181675cc4cb3e9d0e3817d"
+libc = "musl"
+os = "linux"
+
+    [[Dbus.download]]
+    sha256 = "5d134daced249e48b71229debfceef58d36ebdbc265911b23d830246393d00f7"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.x86_64-linux-musl.tar.gz"
+[[Dbus]]
+arch = "x86_64"
+git-tree-sha1 = "fc0ec6f4cfc55c4a05458bc0e515a31cf4b87c6f"
+os = "freebsd"
+
+    [[Dbus.download]]
+    sha256 = "4c532a3aa15ae548162d1f9613a8f1bc1606f47f7d46c6881d40473ad63fca37"
+    url = "https://github.com/JuliaBinaryWrappers/Dbus_jll.jl/releases/download/Dbus-v1.12.16+2/Dbus.v1.12.16.x86_64-unknown-freebsd11.1.tar.gz"

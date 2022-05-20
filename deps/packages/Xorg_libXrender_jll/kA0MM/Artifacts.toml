@@ -1,0 +1,89 @@
+[[Xorg_libXrender]]
+arch = "aarch64"
+git-tree-sha1 = "c616e180e13ac905bd7c51c6f71f9a04e21f9793"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "c90d8200b6c802746346b25ee3d8911d43096a135637d37615881580329f8d2c"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.aarch64-linux-gnu.tar.gz"
+[[Xorg_libXrender]]
+arch = "aarch64"
+git-tree-sha1 = "1ab868abed9cc3dc629dc40e1f27a90f928547ca"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "5735793055cc89efbdd2289a96ff499dea699ba383528d2053b79a9ff3e8c08f"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.aarch64-linux-musl.tar.gz"
+[[Xorg_libXrender]]
+arch = "armv7l"
+git-tree-sha1 = "884d02936ae11f02d50f3ea8776b216771bf3dc5"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "732b7789705470c119c8659e34b63ac1d4fdb7acafd48e647c811100c02d9b67"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.armv7l-linux-gnueabihf.tar.gz"
+[[Xorg_libXrender]]
+arch = "armv7l"
+git-tree-sha1 = "74aadb389613eba40031767ccd68a94a426ac052"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "93eb79ab633076161e7f16ee9f91d5b6bba1a824b65d9c9eb3f9d3f2979e9526"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.armv7l-linux-musleabihf.tar.gz"
+[[Xorg_libXrender]]
+arch = "i686"
+git-tree-sha1 = "bb4508889c1caeb9938a8e45f9fd6d55e2b1afcb"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "6e619bc5c76b41aa40f7cd006871d74208106c5b258adee14f1da448141b786e"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.i686-linux-gnu.tar.gz"
+[[Xorg_libXrender]]
+arch = "i686"
+git-tree-sha1 = "dccb26f20b59045ca73fbd82766b63e062daccda"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "58357643984ee3fbc6abf3c92203581de214f5790e8037c8897b0c53ef29c8c5"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.i686-linux-musl.tar.gz"
+[[Xorg_libXrender]]
+arch = "powerpc64le"
+git-tree-sha1 = "bac514fdc18137a431f558a689128ce259fb3f1b"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "ba73313af2914ce9e2427cb1aa343a771094034c5e66d35e122582be16194d84"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.powerpc64le-linux-gnu.tar.gz"
+[[Xorg_libXrender]]
+arch = "x86_64"
+git-tree-sha1 = "527e66fb9b12dfd1f58157fe0b3fd52b84062432"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "44f42b88ba7558a7916161c6d4c0e0c9e8ee328c5c5561d7ef9ab4130f6c92c5"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.x86_64-linux-gnu.tar.gz"
+[[Xorg_libXrender]]
+arch = "x86_64"
+git-tree-sha1 = "d5862d1b3aaf2e2221de6eb0dfe8246ec4840999"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "e5fa97bb64fb1187326f921919aefe3584bb84b63ab284f17ee23a737da82aa3"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.x86_64-linux-musl.tar.gz"
+[[Xorg_libXrender]]
+arch = "x86_64"
+git-tree-sha1 = "b84546f775933de759c210773bedf48931b6456a"
+os = "freebsd"
+
+    [[Xorg_libXrender.download]]
+    sha256 = "8c310a9a6b6398c1340ed24d9e2041dcd7d6a027994e068ef694e05a5db22a16"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrender_jll.jl/releases/download/Xorg_libXrender-v0.9.10+3/Xorg_libXrender.v0.9.10.x86_64-unknown-freebsd11.1.tar.gz"

@@ -1,0 +1,18 @@
+name = "ArgParse"
+uuid = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
+author = ["Carlo Baldassi <carlobaldassi@gmail.com>"]
+version = "1.1.4"
+
+[deps]
+Logging = "56ddb016-857b-54e1-b83d-db4d58db5568"
+TextWrap = "b718987f-49a8-5099-9789-dcd902bef87d"
+
+[compat]
+TextWrap = "0.1.4, 1"
+julia = "1"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]

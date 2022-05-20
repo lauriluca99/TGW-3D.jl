@@ -1,0 +1,39 @@
+module GLFW
+
+using GLFW_jll
+
+function GetVersion()
+	major, minor, rev = Ref{Cint}(), Ref{Cint}(), Ref{Cint}()
+	ccall((:glfwGetVersion, libglfw), Cvoid, (Ref{Cint}, Ref{Cint}, Ref{Cint}), major, minor, rev)
+	VersionNumber(major[], minor[], rev[])
+end
+
+include("callback.jl")
+include("glfw3.jl")
+include("vulkan.jl")
+include("monitor_properties.jl")
+
+function __init__()
+	# Save errors that occur during initialization
+	errors = Vector{Exception}()
+	SetErrorCallback(err -> push!(errors, err))
+
+	try
+		Init()
+	catch err
+		push!(errors, err)
+	finally
+		SetErrorCallback(throw)
+	end
+
+	if is_initialized()
+		atexit(Terminate)
+		for err in errors
+			@warn err  # Warn about any non-fatal errors that may have occurred during initialization
+		end
+	else
+		throw(errors)  # Throw fatal errors
+	end
+end
+
+end

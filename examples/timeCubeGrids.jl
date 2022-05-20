@@ -1,7 +1,8 @@
+using BenchmarkTools
 using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
-using BenchmarkTools
-include("../src/CAGD.jl/CAGD.jl")
+
+include("../CAGD.jl/CAGD.jl")
 
 function generateCubeGrids(n=1, m=1, p=1)
     V,(VV,EV,FV,CV) = Lar.cuboidGrid([n,m,p],true)

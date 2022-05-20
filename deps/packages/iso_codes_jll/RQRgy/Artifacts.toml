@@ -1,0 +1,6 @@
+[iso_codes]
+git-tree-sha1 = "61ad5b95203334104e8a4de8bb013275aefdaf97"
+
+    [[iso_codes.download]]
+    sha256 = "1cdfb44f5bc33cb41e12cfe8379c7c5c0f38848ab0a8b21ecc09da3564193677"
+    url = "https://github.com/JuliaBinaryWrappers/iso_codes_jll.jl/releases/download/iso_codes-v4.3.0+3/iso_codes.v4.3.0.any.tar.gz"

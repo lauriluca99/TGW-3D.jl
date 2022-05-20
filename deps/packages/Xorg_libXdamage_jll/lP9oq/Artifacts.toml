@@ -1,0 +1,89 @@
+[[Xorg_libXdamage]]
+arch = "aarch64"
+git-tree-sha1 = "967ef1f3a87c81ddde5752b6aa5f858f653c55ff"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "e817e1594c6ca1f005f6754b072f4b06053374c78ec477cc70ad1cb3ce275c6c"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.aarch64-linux-gnu.tar.gz"
+[[Xorg_libXdamage]]
+arch = "aarch64"
+git-tree-sha1 = "0d4d7d87d4d82899f975af9cb50709d97c98ed4f"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "b3df6e040b51d676f7113363acb43049879ad9529a67dca9d651e89c807b177b"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.aarch64-linux-musl.tar.gz"
+[[Xorg_libXdamage]]
+arch = "armv7l"
+git-tree-sha1 = "3a517d6c03fa564055a3a045e1d21adc8d4c6115"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "a9d80195887d73f7440f6011481d0a484f65629adebc8192f06f4a5a66485fb7"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.armv7l-linux-gnueabihf.tar.gz"
+[[Xorg_libXdamage]]
+arch = "armv7l"
+git-tree-sha1 = "a9aadaa556a178d25f9489a1034564b1b7526687"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "6ab4e7a8f1b10324f896e3002e4fc1eb9afabfa8b26ac755e6fc65e3fd7ed0b9"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.armv7l-linux-musleabihf.tar.gz"
+[[Xorg_libXdamage]]
+arch = "i686"
+git-tree-sha1 = "dd505644cca90a8082952fc18d362ad26b785461"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "23242fb0fc96d6902f4737f3cb98c174aa790c9eb6093baea164c9eaf8a4185e"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.i686-linux-gnu.tar.gz"
+[[Xorg_libXdamage]]
+arch = "i686"
+git-tree-sha1 = "a78aba1b4a75577fc4b8b43fb902d84927b22722"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "274be9fb6b222618541cc46dc7e2e5cfe58e1f72ee8d3a4f3928764979736173"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.i686-linux-musl.tar.gz"
+[[Xorg_libXdamage]]
+arch = "powerpc64le"
+git-tree-sha1 = "69f9df8756fc4ea6b7dda4676cb47e4275263a0c"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "88368d26b978f6c777e8abbe45e4380c27e3dafc08d36284eab0c034c337f882"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.powerpc64le-linux-gnu.tar.gz"
+[[Xorg_libXdamage]]
+arch = "x86_64"
+git-tree-sha1 = "f7ba6f13be70ab577ee4a4c28bf10dcf07b3c21d"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "927042bbfe921dda0fdf97d810e8de18ef0ba2d753d99c6b72b3606eaf0e0273"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.x86_64-linux-gnu.tar.gz"
+[[Xorg_libXdamage]]
+arch = "x86_64"
+git-tree-sha1 = "13ecf80bca835217202259a3cfd0093b6977f712"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "7c684cbc35ad148bd701ac82270ee83c6fb1511f47fdb5e7c2f984a428e19b01"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.x86_64-linux-musl.tar.gz"
+[[Xorg_libXdamage]]
+arch = "x86_64"
+git-tree-sha1 = "c681bbc0cbcbcf2f01a9dd22aa9ee02ce410e581"
+os = "freebsd"
+
+    [[Xorg_libXdamage.download]]
+    sha256 = "dacea3476033376baa014e7f9f2a593644714034852a6696b2f775ff0182cc11"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXdamage_jll.jl/releases/download/Xorg_libXdamage-v1.1.5+3/Xorg_libXdamage.v1.1.5.x86_64-unknown-freebsd11.1.tar.gz"

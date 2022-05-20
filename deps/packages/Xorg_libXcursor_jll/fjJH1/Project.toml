@@ -1,0 +1,15 @@
+name = "Xorg_libXcursor_jll"
+uuid = "935fb764-8cf2-53bf-bb30-45bb1f8bf724"
+version = "1.2.0+4"
+
+[deps]
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Xorg_libXfixes_jll = "d091e8ba-531a-589c-9de9-94069b037ed8"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+Xorg_libXrender_jll = "ea2f1a96-1ddc-540d-b46f-429655e07cfa"
+
+[compat]
+JLLWrappers = "1.1.0"
+julia = "1.0"

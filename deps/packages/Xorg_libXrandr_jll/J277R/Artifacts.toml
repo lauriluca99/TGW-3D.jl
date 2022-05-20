@@ -1,0 +1,89 @@
+[[Xorg_libXrandr]]
+arch = "aarch64"
+git-tree-sha1 = "151fd9f09bf4d2053b2fa78d04577178dd26a4b1"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "259aec9fa015ca2c3e2e16cde982541aab380e274f2024954b89d039b0b86a76"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.aarch64-linux-gnu.tar.gz"
+[[Xorg_libXrandr]]
+arch = "aarch64"
+git-tree-sha1 = "23dc25fe89caa4ea3088cad3e932b122afb6e7a6"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "4d8b5853c490f50cc75ee36cd916e30f5cad45c69cb6e4d7a3b291e412a5b878"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.aarch64-linux-musl.tar.gz"
+[[Xorg_libXrandr]]
+arch = "armv7l"
+git-tree-sha1 = "19442158a6db213612e49a11dccf6d3cbb8f2b15"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "cfe170f6e56f981b8161f41e5e9373f288561d117a24de967811effe2cd1d2b9"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.armv7l-linux-gnueabihf.tar.gz"
+[[Xorg_libXrandr]]
+arch = "armv7l"
+git-tree-sha1 = "d1fbbae76143d9fc05fb73979e38efce6a23c0a8"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "1ba533507c1250eaacd98cebd0c71b7dc49a54b66ee03059de8c74c50c52f232"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.armv7l-linux-musleabihf.tar.gz"
+[[Xorg_libXrandr]]
+arch = "i686"
+git-tree-sha1 = "8b61d7b9ad2fd2fdaaaf83683a88248f31c1aa5c"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "9152a10e2ba6bd815152e9f9422d2fd856af1c82b7fe5b57f5414168459b60c0"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.i686-linux-gnu.tar.gz"
+[[Xorg_libXrandr]]
+arch = "i686"
+git-tree-sha1 = "107934ac2bae417d1e0653a8a098b9b1939f04a3"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "7d4ede1ffaf15b3815be737abe23e472acef92bfac5c70ecabdf92391d49e6ca"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.i686-linux-musl.tar.gz"
+[[Xorg_libXrandr]]
+arch = "powerpc64le"
+git-tree-sha1 = "92b812a9392c2f632654e7d12525a367b0bc8f95"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "4ec55ea5408eb15583d8c83ad77565da2c8b7f81d37a6eb6a9fd0a9e83adb43f"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.powerpc64le-linux-gnu.tar.gz"
+[[Xorg_libXrandr]]
+arch = "x86_64"
+git-tree-sha1 = "4daa3879a820580557ef34945e2ae243dfcbba11"
+libc = "glibc"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "eb89f0c6d69ad486b5c3197609f57877b58f680a6beb6fd224dba1ecaf405994"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.x86_64-linux-gnu.tar.gz"
+[[Xorg_libXrandr]]
+arch = "x86_64"
+git-tree-sha1 = "45d05b06e18c60a7b32ad1e525cd2032c3488e1c"
+libc = "musl"
+os = "linux"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "5b7c5e71a1bf6ebe848e7f87f50509d965cd2c06d16f071edc87e0212a854f3a"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.x86_64-linux-musl.tar.gz"
+[[Xorg_libXrandr]]
+arch = "x86_64"
+git-tree-sha1 = "dd4cb4280a64750dbdfb3a9b35f2db8fdb32d7d5"
+os = "freebsd"
+
+    [[Xorg_libXrandr.download]]
+    sha256 = "2626de7d1f33a7935a7816156eb87e5bec37753686052767a8186e8757186e91"
+    url = "https://github.com/JuliaBinaryWrappers/Xorg_libXrandr_jll.jl/releases/download/Xorg_libXrandr-v1.5.2+3/Xorg_libXrandr.v1.5.2.x86_64-unknown-freebsd11.1.tar.gz"

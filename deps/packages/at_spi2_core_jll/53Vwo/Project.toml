@@ -1,0 +1,16 @@
+name = "at_spi2_core_jll"
+uuid = "0fc3237b-ac94-5853-b45c-d43d59a06200"
+version = "2.34.0+4"
+
+[deps]
+JLLWrappers = "692b3bcd-3c85-4b1f-b108-f13ce0eb3210"
+Pkg = "44cfe95a-1eb2-52ea-b672-e2afdf69b78f"
+Xorg_libXtst_jll = "b6f176f1-7aea-5357-ad67-1d3e565ea1c6"
+Libdl = "8f399da3-3557-5675-b5ff-fb832c97cbdb"
+Glib_jll = "7746bdde-850d-59dc-9ae8-88ece973131d"
+Dbus_jll = "ee1fde0b-3d02-5ea6-8484-8dfef6360eab"
+Artifacts = "56f22d72-fd6d-98f1-02f0-08ddc0907c33"
+
+[compat]
+JLLWrappers = "1.1.0"
+julia = "1.0"

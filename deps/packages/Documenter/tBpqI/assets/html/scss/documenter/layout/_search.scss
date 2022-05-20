@@ -1,0 +1,18 @@
+// Additional styling for the search page
+#documenter .docs-main {
+  #documenter-search-info {
+    margin-bottom: 1rem;
+  }
+
+  #documenter-search-results {
+    list-style-type: circle;
+    list-style-position: outside;
+
+    li {
+      margin-left: 2rem;
+    }
+    .docs-highlight {
+      background-color: yellow;
+    }
+  }
+}

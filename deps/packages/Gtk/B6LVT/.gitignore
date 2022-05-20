@@ -1,0 +1,7 @@
+*.swp
+deps/deps.jl
+docs/build
+.DS_Store
+Manifest.toml
+MutableArtifacts.toml
+

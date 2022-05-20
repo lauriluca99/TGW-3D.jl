@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Deprecated functions to render with Cairo: Librsvg Reference Manual</title>
+<meta name="generator" content="DocBook XSL Stylesheets Vsnapshot">
+<link rel="home" href="index.html" title="Librsvg Reference Manual">
+<link rel="up" href="rsvg.html" title="Part I. API Reference">
+<link rel="prev" href="rsvg-Using-RSVG-with-Cairo.html" title="Using RSVG with Cairo">
+<link rel="next" href="rsvg-Deprecated-functions-to-render-to-GdkPixbuf.html" title="Deprecated functions to render to GdkPixbuf">
+<meta name="generator" content="GTK-Doc V1.32 (XML mode)">
+<link rel="stylesheet" href="style.css" type="text/css">
+</head>
+<body bgcolor="white" text="black" link="#0000FF" vlink="#840084" alink="#0000FF">
+<table class="navigation" id="top" width="100%" summary="Navigation header" cellpadding="2" cellspacing="5"><tr valign="middle">
+<td width="100%" align="left" class="shortcuts">
+<a href="#" class="shortcut">Top</a><span id="nav_description">  <span class="dim">|</span> 
+                  <a href="#rsvg-Deprecated-functions-to-render-with-Cairo.description" class="shortcut">Description</a></span>
+</td>
+<td><a accesskey="h" href="index.html"><img src="home.png" width="16" height="16" border="0" alt="Home"></a></td>
+<td><a accesskey="u" href="rsvg.html"><img src="up.png" width="16" height="16" border="0" alt="Up"></a></td>
+<td><a accesskey="p" href="rsvg-Using-RSVG-with-Cairo.html"><img src="left.png" width="16" height="16" border="0" alt="Prev"></a></td>
+<td><a accesskey="n" href="rsvg-Deprecated-functions-to-render-to-GdkPixbuf.html"><img src="right.png" width="16" height="16" border="0" alt="Next"></a></td>
+</tr></table>
+<div class="refentry">
+<a name="rsvg-Deprecated-functions-to-render-with-Cairo"></a><div class="titlepage"></div>
+<div class="refnamediv"><table width="100%"><tr>
+<td valign="top">
+<h2><span class="refentrytitle"><a name="rsvg-Deprecated-functions-to-render-with-Cairo.top_of_page"></a>Deprecated functions to render with Cairo</span></h2>
+<p>Deprecated functions to render with Cairo</p>
+</td>
+<td class="gallery_image" valign="top" align="right"></td>
+</tr></table></div>
+<div class="refsect1">
+<a name="rsvg-Deprecated-functions-to-render-with-Cairo.functions"></a><h2>Functions</h2>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="functions_proto_type">
+<col class="functions_proto_name">
+</colgroup>
+<tbody>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="rsvg-Deprecated-functions-to-render-with-Cairo.html#rsvg-handle-render-cairo" title="rsvg_handle_render_cairo ()">rsvg_handle_render_cairo</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+<tr>
+<td class="function_type">
+<a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+</td>
+<td class="function_name">
+<a class="link" href="rsvg-Deprecated-functions-to-render-with-Cairo.html#rsvg-handle-render-cairo-sub" title="rsvg_handle_render_cairo_sub ()">rsvg_handle_render_cairo_sub</a> <span class="c_punctuation">()</span>
+</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect1">
+<a name="rsvg-Deprecated-functions-to-render-with-Cairo.description"></a><h2>Description</h2>
+</div>
+<div class="refsect1">
+<a name="rsvg-Deprecated-functions-to-render-with-Cairo.functions_details"></a><h2>Functions</h2>
+<div class="refsect2">
+<a name="rsvg-handle-render-cairo"></a><h3>rsvg_handle_render_cairo ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+rsvg_handle_render_cairo (<em class="parameter"><code><a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a> *handle</code></em>,
+                          <em class="parameter"><code><a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-t"><span class="type">cairo_t</span></a> *cr</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">rsvg_handle_render_cairo</code> has been deprecated since version 2.52. and should not be used in newly-written code.</p>
+<p>Please use <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-document" title="rsvg_handle_render_document ()"><code class="function">rsvg_handle_render_document()</code></a> instead; that function lets
+you pass a viewport and obtain a good error message.</p>
+</div>
+<p>Draws a loaded SVG handle to a Cairo context.  Please try to use
+<a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-document" title="rsvg_handle_render_document ()"><code class="function">rsvg_handle_render_document()</code></a> instead, which allows you to pick the size
+at which the document will be rendered.</p>
+<p>Historically this function has picked a size by itself, based on the following rules:</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+    If the SVG document has both <code class="literal">width</code> and <code class="literal">height</code>
+    attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
+    ex), the function computes the size directly based on the dots-per-inch (DPI) you
+    have configured with <a class="link" href="RsvgHandle.html#rsvg-handle-set-dpi" title="rsvg_handle_set_dpi ()"><code class="function">rsvg_handle_set_dpi()</code></a>.  This is the same approach as
+    <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-get-intrinsic-size-in-pixels" title="rsvg_handle_get_intrinsic_size_in_pixels ()"><code class="function">rsvg_handle_get_intrinsic_size_in_pixels()</code></a>.
+  </li>
+<li class="listitem">
+    Otherwise, if there is a <code class="literal">viewBox</code> attribute and both
+    <code class="literal">width</code> and <code class="literal">height</code> are set to
+    <code class="literal">100%</code> (or if they don't exist at all and thus default to 100%),
+    the function uses the width and height of the viewBox as a pixel size.  This
+    produces a rendered document with the correct aspect ratio.
+  </li>
+<li class="listitem">
+     Otherwise, this function computes the extents of every graphical object in the SVG
+     document to find the total extents.  This is moderately expensive, but no more expensive
+     than rendering the whole document, for example.
+  </li>
+<li class="listitem">
+    This function cannot deal with percentage-based units for <code class="literal">width</code>
+    and <code class="literal">height</code> because there is no viewport against which they could
+    be resolved; that is why it will compute the extents of objects in that case.  This
+    is why we recommend that you use <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-document" title="rsvg_handle_render_document ()"><code class="function">rsvg_handle_render_document()</code></a> instead, which takes
+    in a viewport and follows the sizing policy from the web platform.
+  </li>
+</ul></div>
+<p>Drawing will occur with respect to the <em class="parameter"><code>cr</code></em>
+'s current transformation: for example, if
+the <em class="parameter"><code>cr</code></em>
+ has a rotated current transformation matrix, the whole SVG will be rotated in
+the rendered version.</p>
+<p>This function depends on the <a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a>'s DPI to compute dimensions in
+pixels, so you should call <a class="link" href="RsvgHandle.html#rsvg-handle-set-dpi" title="rsvg_handle_set_dpi ()"><code class="function">rsvg_handle_set_dpi()</code></a> beforehand.</p>
+<p>Note that <em class="parameter"><code>cr</code></em>
+ must be a Cairo context that is not in an error state, that is,
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-status"><code class="function">cairo_status()</code></a> must return <a href="/usr/share/gtk-doc/html/cairo/cairo-Error-handling.html#CAIRO-STATUS-SUCCESS:CAPS"><span class="type">CAIRO_STATUS_SUCCESS</span></a> for it.  Cairo can set a
+context to be in an error state in various situations, for example, if it was
+passed an invalid matrix or if it was created for an invalid surface.</p>
+<div class="refsect3">
+<a name="rsvg-handle-render-cairo.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>handle</p></td>
+<td class="parameter_description"><p>A <a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cr</p></td>
+<td class="parameter_description"><p>A Cairo context</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="rsvg-handle-render-cairo.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if drawing succeeded; <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+<hr>
+<div class="refsect2">
+<a name="rsvg-handle-render-cairo-sub"></a><h3>rsvg_handle_render_cairo_sub ()</h3>
+<pre class="programlisting"><a href="/usr/share/gtk-doc/html/glib/glib-Basic-Types.html#gboolean"><span class="returnvalue">gboolean</span></a>
+rsvg_handle_render_cairo_sub (<em class="parameter"><code><a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a> *handle</code></em>,
+                              <em class="parameter"><code><a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-t"><span class="type">cairo_t</span></a> *cr</code></em>,
+                              <em class="parameter"><code>const <span class="type">char</span> *id</code></em>);</pre>
+<div class="warning">
+<p><code class="literal">rsvg_handle_render_cairo_sub</code> has been deprecated since version 2.52. and should not be used in newly-written code.</p>
+<p>Please use <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-layer" title="rsvg_handle_render_layer ()"><code class="function">rsvg_handle_render_layer()</code></a> instead; that function lets
+you pass a viewport and obtain a good error message.</p>
+</div>
+<p>Renders a single SVG element in the same place as for a whole SVG document (a "subset"
+of the document).  Please try to use <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-layer" title="rsvg_handle_render_layer ()"><code class="function">rsvg_handle_render_layer()</code></a> instead, which allows
+you to pick the size at which the document with the layer will be rendered.</p>
+<p>This is equivalent to <a class="link" href="rsvg-Deprecated-functions-to-render-with-Cairo.html#rsvg-handle-render-cairo" title="rsvg_handle_render_cairo ()"><code class="function">rsvg_handle_render_cairo()</code></a>, but it renders only a single
+element and its children, as if they composed an individual layer in the SVG.</p>
+<p>Historically this function has picked a size for the whole document by itself, based
+on the following rules:</p>
+<div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; ">
+<li class="listitem">
+    If the SVG document has both <code class="literal">width</code> and <code class="literal">height</code>
+    attributes with physical units (px, in, cm, mm, pt, pc) or font-based units (em,
+    ex), the function computes the size directly based on the dots-per-inch (DPI) you
+    have configured with <a class="link" href="RsvgHandle.html#rsvg-handle-set-dpi" title="rsvg_handle_set_dpi ()"><code class="function">rsvg_handle_set_dpi()</code></a>.  This is the same approach as
+    <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-get-intrinsic-size-in-pixels" title="rsvg_handle_get_intrinsic_size_in_pixels ()"><code class="function">rsvg_handle_get_intrinsic_size_in_pixels()</code></a>.
+  </li>
+<li class="listitem">
+    Otherwise, if there is a <code class="literal">viewBox</code> attribute and both
+    <code class="literal">width</code> and <code class="literal">height</code> are set to
+    <code class="literal">100%</code> (or if they don't exist at all and thus default to 100%),
+    the function uses the width and height of the viewBox as a pixel size.  This
+    produces a rendered document with the correct aspect ratio.
+  </li>
+<li class="listitem">
+    Otherwise, this function computes the extents of every graphical object in the SVG
+    document to find the total extents.  This is moderately expensive, but no more expensive
+    than rendering the whole document, for example.
+  </li>
+<li class="listitem">
+    This function cannot deal with percentage-based units for <code class="literal">width</code>
+    and <code class="literal">height</code> because there is no viewport against which they could
+    be resolved; that is why it will compute the extents of objects in that case.  This
+    is why we recommend that you use <a class="link" href="rsvg-Using-RSVG-with-Cairo.html#rsvg-handle-render-layer" title="rsvg_handle_render_layer ()"><code class="function">rsvg_handle_render_layer()</code></a> instead, which takes
+    in a viewport and follows the sizing policy from the web platform.
+  </li>
+</ul></div>
+<p>Drawing will occur with respect to the <em class="parameter"><code>cr</code></em>
+'s current transformation: for example, if
+the <em class="parameter"><code>cr</code></em>
+ has a rotated current transformation matrix, the whole SVG will be rotated in
+the rendered version.</p>
+<p>This function depends on the <a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a>'s DPI to compute dimensions in
+pixels, so you should call <a class="link" href="RsvgHandle.html#rsvg-handle-set-dpi" title="rsvg_handle_set_dpi ()"><code class="function">rsvg_handle_set_dpi()</code></a> beforehand.</p>
+<p>Note that <em class="parameter"><code>cr</code></em>
+ must be a Cairo context that is not in an error state, that is,
+<a href="/usr/share/gtk-doc/html/cairo/cairo-cairo-t.html#cairo-status"><code class="function">cairo_status()</code></a> must return <a href="/usr/share/gtk-doc/html/cairo/cairo-Error-handling.html#CAIRO-STATUS-SUCCESS:CAPS"><span class="type">CAIRO_STATUS_SUCCESS</span></a> for it.  Cairo can set a
+context to be in an error state in various situations, for example, if it was
+passed an invalid matrix or if it was created for an invalid surface.</p>
+<p>Element IDs should look like an URL fragment identifier; for example, pass
+"#<span class="type">foo</span>" (hash <code class="literal">foo</code>) to get the geometry of the element that
+has an <code class="literal">id="foo"</code> attribute.</p>
+<div class="refsect3">
+<a name="rsvg-handle-render-cairo-sub.parameters"></a><h4>Parameters</h4>
+<div class="informaltable"><table class="informaltable" width="100%" border="0">
+<colgroup>
+<col width="150px" class="parameters_name">
+<col class="parameters_description">
+<col width="200px" class="parameters_annotations">
+</colgroup>
+<tbody>
+<tr>
+<td class="parameter_name"><p>handle</p></td>
+<td class="parameter_description"><p>A <a class="link" href="RsvgHandle.html" title="RsvgHandle"><span class="type">RsvgHandle</span></a></p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>cr</p></td>
+<td class="parameter_description"><p>A Cairo context</p></td>
+<td class="parameter_annotations"> </td>
+</tr>
+<tr>
+<td class="parameter_name"><p>id</p></td>
+<td class="parameter_description"><p>An element's id within the SVG, starting with "##" (a single
+hash character), for example, "#<span class="type">layer1</span>".  This notation corresponds to a
+URL's fragment ID.  Alternatively, pass <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#NULL:CAPS"><code class="literal">NULL</code></a> to render the whole SVG. </p></td>
+<td class="parameter_annotations"><span class="annotation">[<acronym title="NULL may be passed as the value in, out, in-out; or as a return value."><span class="acronym">nullable</span></acronym>]</span></td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="refsect3">
+<a name="rsvg-handle-render-cairo-sub.returns"></a><h4>Returns</h4>
+<p> <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#TRUE:CAPS"><code class="literal">TRUE</code></a> if drawing succeeded; <a href="/usr/share/gtk-doc/html/glib/glib-Standard-Macros.html#FALSE:CAPS"><code class="literal">FALSE</code></a> otherwise.</p>
+</div>
+<p class="since">Since: <a class="link" href="api-index-2-14.html#api-index-2.14">2.14</a></p>
+</div>
+</div>
+</div>
+<div class="footer">
+<hr>Generated by GTK-Doc V1.32</div>
+</body>
+</html>
