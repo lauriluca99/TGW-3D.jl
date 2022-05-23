@@ -2,10 +2,8 @@ if Base.HOME_PROJECT[] !== nothing
     # JuliaLang/julia/pull/28625
     Base.HOME_PROJECT[] = abspath(Base.HOME_PROJECT[])
 end
-import Pkg
-Pkg.add("Documenter")
 
-using Documenter, using TGW3D
+using Documenter, TGW3D
 
 makedocs(
     format = Documenter.HTML(),

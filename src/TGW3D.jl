@@ -1,3 +1,6 @@
+"TGW3D module from LinearAlgebraicRepresentation"
+module TGW3D
+
 using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
 
@@ -264,3 +267,5 @@ function spatial_arrangement(
 
 	rV, rEV, rFE, rCF = spatial_arrangement_2(rV, rcopEV, rcopFE)
 end
+
+end #module

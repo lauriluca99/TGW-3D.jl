@@ -45,7 +45,7 @@ Un complesso co-chain è la stessa cosa ma con direzioni opposte.
 In questo progetto si vuole ottimizzare e parallelizzare il codice dell'algoritmo TGW 3D presente
 nella libreria LinearAlgebraicRappresentation.jl 
 
-## **TGW 3D**:
+## **TGW 3D**
 
 L’algoritmo Topological Gift Wrapping calcola le
 d-celle di una partizione di spazio generate da loro partendo da un

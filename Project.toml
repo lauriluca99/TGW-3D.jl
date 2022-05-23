@@ -1,8 +1,9 @@
 name = "TGW3D"
+uuid = "78a53d37-e61b-40f7-9049-cea10f8f1180"
 keywords = ["geometry", "topology", "cell-complex", "chain-complex"]
 license = "MIT"
 desc = "Topological Gift Wrapping algorithm for 3D"
-version = "1.0.0"
+version = "0.1.0"
 
 [deps]
 ArgParse = "c7e460c6-2fb9-53a9-8c5b-16f535851c63"
