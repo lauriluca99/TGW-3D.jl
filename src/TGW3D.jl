@@ -10,23 +10,23 @@ Lar = LinearAlgebraicRepresentation
 """
 	Points = Array{Number,2}
 
-Alias declation of LAR-specific data structure.
-Dense `Array{Number,2,1}` ``M x N`` to store the position of *vertices* (0-cells)
-of a *cellular complex*. The number of rows ``M`` is the dimension
-of the embedding space. The number of columns ``N`` is the number of vertices.
+Dichiarazione Alias di specifiche strutture dati di LAR.
+`Array{Number,2,1}` ``M x N`` compatto per immagazzinare la posizione dei *vertici* (0-cells)
+di un *complesso cellulare*. Il numero delle righe ``M`` è la dimensione 
+dello spazio di inclusione. Il numero delle colonne ``N`` è il numero dei vertici.
 """
 const Points = Matrix
 
 """
 	ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
-Alias declation of LAR-specific data structure.
-`SparseMatrix` in *Compressed Sparse Column* format, contains the coordinate
-representation of an operator between linear spaces of `P-chains`.
-Operators ``P-Boundary : P-Chain -> (P-1)-Chain``
-and ``P-Coboundary : P-Chain -> (P+1)-Chain`` are typically stored as
-`ChainOp` with elements in ``{-1,0,1}`` or in ``{0,1}``, for
-*signed* and *unsigned* operators, respectively.
+Dichiarazione Alias di specifiche strutture dati di LAR.
+`SparseMatrix` nel formato *Colonne sparse compresse*, contiene la rappresentazione
+in coordinate di un operatore tra lo spazio lineare delle `P-chains`.
+Operatori ``P-Boundary : P-Chain -> (P-1)-Chain``
+e ``P-Coboundary : P-Chain -> (P+1)-Chain`` sono tipicamente immagazinati come
+`ChainOp`con elementi in ``{-1,0,1}`` oppure in ``{0,1}``, per
+operatori *assegnati* e *non-assegnati* rispettivamente.
 """
 const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
@@ -308,14 +308,15 @@ end
 """
     spatial_arrangement(V::Points, copEV::ChainOp, copFE::ChainOp; [multiproc::Bool])
 
+Calcola la disposizione sulle cellule complesse 2-skeleton date	in 3D.
+														
+Un complesso cellulare è disposto quando l'intersezione di ogni coppia di celle
+del complesso è vuota e l'unione di tutte le celle rappresenta l'intero spazio Euclideo.
+La funzione ritorna la piena disposizione complessa come una lista di vertici V e una catena di lati EV, FE, CF.
 Compute the arrangement on the given cellular complex 2-skeleton in 3D.
 
-A cellular complex is arranged when the intersection of every possible pair of cell
-of the complex is empty and the union of all the cells is the whole Euclidean space.
-The function returns the full arranged complex as a list of vertices V and a chain of borders EV, FE, CF.
-
-## Additional arguments:
-- `multiproc::Bool`: Runs the computation in parallel mode. Defaults to `false`.
+## Agomenti addizionali:
+- `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement(
 		V::Points, # by rows
