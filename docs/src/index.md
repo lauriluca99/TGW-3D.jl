@@ -1,6 +1,6 @@
 # Riferimenti
 
-Questa pagina ha riferimenti a tutti i tipi e funzioni utilizzati.
+Questa pagina ha i riferimenti a tutti i tipi, metodi e funzioni utilizzati.
 
 ## Tipi
 

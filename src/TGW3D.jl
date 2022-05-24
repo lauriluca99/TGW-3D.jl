@@ -32,7 +32,7 @@ const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
 
 """
-frag_face_channel(
+frag\_face\_channel(
     in_chan, 
     out_chan, 
     V::Points, 
@@ -198,13 +198,13 @@ end
 
 
 """
-function spatial_arrangement_1(
+function spatial\_arrangement\_1(
 			V::Points,
 			copEV::ChainOp,
 			copFE::ChainOp, 
             [multiproc::Bool=false])
 			
-Si occupa del processo di frammentazione delle facce per l’utilizzo del planar arrangement.	
+Si occupa del processo di frammentazione delle facce per l'utilizzo del planar arrangement.	
 Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertici, lati e facce.
 	
 """
@@ -284,7 +284,7 @@ function removeinnerloops(g, nFE)
 end
 
 """
-function spatial_arrangement_2(
+function spatial\_arrangement\_2(
     rV::Points, 
     rcopEV::ChainOp, 
     rcopFE::ChainOp, 
