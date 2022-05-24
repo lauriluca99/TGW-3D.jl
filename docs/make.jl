@@ -14,6 +14,8 @@ makedocs(
         "API Reference" => "index.md"
         ]
     )
+
 deploydocs(
     repo   = "github.com/lauriluca99/TGW-3D.jl.git",
+	versions = nothing
 )

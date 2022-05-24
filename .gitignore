@@ -1,3 +1,4 @@
 docs/build/*
 deps
 .DS_Store
+.bak

@@ -1,15 +1,46 @@
-"TGW3D module from LinearAlgebraicRepresentation"
+"TGW3D module for spatial arrangement in LinearAlgebraicRepresentation"
 module TGW3D
 
 using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
 
+#export Points, ChainOp, frag_face_channel, frag_face, merge_vertices, spatial_arrangement_1, spatial_arrangement_2, spatial_arrangement, removeinnerloops
 """
-	frag_face_channel(in_chan, out_chan, V, EV, FE, sp_idx)
+	Points = Array{Number,2}
 
-Parallel fragmentation of faces in `FE` against faces in `sp_idx`.
+Alias declation of LAR-specific data structure.
+Dense `Array{Number,2,1}` ``M x N`` to store the position of *vertices* (0-cells)
+of a *cellular complex*. The number of rows ``M`` is the dimension
+of the embedding space. The number of columns ``N`` is the number of vertices.
 """
-function frag_face_channel(in_chan, out_chan, V, EV, FE, sp_idx)
+const Points = Matrix
+
+"""
+	ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
+
+Alias declation of LAR-specific data structure.
+`SparseMatrix` in *Compressed Sparse Column* format, contains the coordinate
+representation of an operator between linear spaces of `P-chains`.
+Operators ``P-Boundary : P-Chain -> (P-1)-Chain``
+and ``P-Coboundary : P-Chain -> (P+1)-Chain`` are typically stored as
+`ChainOp` with elements in ``{-1,0,1}`` or in ``{0,1}``, for
+*signed* and *unsigned* operators, respectively.
+"""
+const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
+
+
+"""
+frag_face_channel(
+    in_chan, 
+    out_chan, 
+    V::Points, 
+    EV::ChainOp, 
+    FE::ChainOp, 
+    sp_idx)
+
+Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
+"""
+function frag_face_channel(in_chan, out_chan, V::Points, EV, FE, sp_idx)
     run_loop = true
     while run_loop
         sigma = take!(in_chan)
@@ -24,9 +55,15 @@ end
 
 
 """
-	frag_face(V, EV, FE, sp_idx, sigma)
+frag_face(
+		V::Points, 
+        EV::ChainOp, 
+        FE::ChainOp, 
+		sp_idx::Vector{Int64}, 
+        sigma::Int64)
 
-`sigma` face fragmentation against faces in `sp_idx[sigma]`
+Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezioni con le facce in `sp_idx[sigma]`
+ed ottenere la disposizione 2D della faccia `sigma`.
 """
 function frag_face(V, EV, FE, sp_idx, sigma)
 
@@ -58,14 +95,25 @@ function frag_face(V, EV, FE, sp_idx, sigma)
     return nV, nEV, nFE
 end
 
-function merge_vertices(V::Lar.Points, EV::Lar.ChainOp, FE::Lar.ChainOp, err=1e-4)
+
+"""
+merge_vertices(
+    V::Points, 
+    EV::ChainOp, 
+    FE::ChainOp, 
+    [err=1e-4])
+	
+Rimuove i vertici congruenti ad un singolo rappresentatante, traduce i lati per tener 
+conto della congruenza ed otteniene nuove facce congruenti.
+"""
+function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
    vertsnum = size(V, 1)
    edgenum = size(EV, 1)
    facenum = size(FE, 1)
    newverts = zeros(Int, vertsnum)
    # KDTree constructor needs an explicit array of Float64
    V = Array{Float64,2}(V)
-   W = convert(Lar.Points, LinearAlgebra.transpose(V))
+   W = convert(Points, LinearAlgebra.transpose(V))
    kdtree = KDTree(W)
 # remove vertices congruent to a single representative
    todelete = []
@@ -145,22 +193,27 @@ function merge_vertices(V::Lar.Points, EV::Lar.ChainOp, FE::Lar.ChainOp, err=1e-
    return Lar.Points(nV), nEV, nFE
 end
 
-#function merge_vertices(V::Lar.Points, EV::Lar.ChainOp, FE::Lar.ChainOp, err=1e-4)
-#println(">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
-#println("\n\nHERE TO Make LOCAL CONGRUENCE\n\n")
-#println("<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<")
-#   return Lar.Points(nV), nEV, nFE
-#end
 
 
+"""
 function spatial_arrangement_1(
-		V::Lar.Points,
-		copEV::Lar.ChainOp,
-		copFE::Lar.ChainOp, multiproc::Bool=false)
+			V::Points,
+			copEV::ChainOp,
+			copFE::ChainOp, 
+            [multiproc::Bool=false])
+			
+Si occupa del processo di frammentazione delle facce per l’utilizzo del planar arrangement.	
+Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertici, lati e facce.
+	
+"""
+function spatial_arrangement_1(
+		V::Points,
+		copEV::ChainOp,
+		copFE::ChainOp, multiproc::Bool=false)
 
 	# spaceindex computation
 	FV = Lar.compute_FV( copEV, copFE )
-	model = (convert(Lar.Points,V'), FV)
+	model = (convert(Points,V'), FV)
 	sp_idx = Lar.spaceindex(model) # OK!!  tested symmetry of computed relation
 
 	# initializations
@@ -203,7 +256,7 @@ function spatial_arrangement_1(
 # @show SparseArrays.nzind(nFE)
 # 			end
 			#nV, nEV, nFE = Lar.fragface(V, copEV, copFE, sp_idx, sigma)
-			nV = convert(Lar.Points, nV)
+			nV = convert(Points, nV)
             a,b,c = Lar.skel_merge( rV,rEV,rFE,  nV,nEV,nFE )
             rV=a;  rEV=b;  rFE=c
         end
@@ -214,10 +267,13 @@ function spatial_arrangement_1(
 end
 
 """
-	removeinnerloops(g, nFE)
+	removeinnerloops(
+        g::Int64, 
+        nFE::ChainOp)
 
-Remove the faces within the inner loops from sparse matrix nFE.
-The return walue has `g` less rows than the input `nFE`.
+Rimuove le facce all'interno dei cicli interni dalla matrice sparsa nFE.
+Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
+
 """
 function removeinnerloops(g, nFE)
 	# optimized solution (to check): remove the last `g` rows
@@ -225,18 +281,26 @@ function removeinnerloops(g, nFE)
 	nFE = Lar.lar2cop(FE[1:end-g])
 end
 
+"""
 function spatial_arrangement_2(
-		rV::Lar.Points,
-		rcopEV::Lar.ChainOp,
-		rcopFE::Lar.ChainOp, 
+    rV::Points, 
+    rcopEV::ChainOp, 
+    rcopFE::ChainOp, 
+    [multiproc::Bool=false])
+			
+	TODO
+		
+"""
+function spatial_arrangement_2(
+		rV::Points,
+		rcopEV::ChainOp,
+		rcopFE::ChainOp, 
         multiproc::Bool=false)
 
 	rcopCF = Lar.build_copFC(rV, rcopEV, rcopFE)  ######
 	#rcopCF = Lar.Arrangement.minimal_3cycles(rV, rcopEV, rcopFE)
     return rV, rcopEV, rcopFE, rcopCF
 end
-
-
 
 
 """
@@ -252,9 +316,9 @@ The function returns the full arranged complex as a list of vertices V and a cha
 - `multiproc::Bool`: Runs the computation in parallel mode. Defaults to `false`.
 """
 function spatial_arrangement(
-		V::Lar.Points, # by rows
-		copEV::Lar.ChainOp,
-		copFE::Lar.ChainOp, 
+		V::Points, # by rows
+		copEV::ChainOp,
+		copFE::ChainOp, 
         multiproc::Bool=false)
 
 	# face subdivision
