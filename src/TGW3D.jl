@@ -1,6 +1,8 @@
 "TGW3D module for spatial arrangement in LinearAlgebraicRepresentation"
 module TGW3D
 
+using SparseArrays
+using LinearAlgebra
 using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
 
