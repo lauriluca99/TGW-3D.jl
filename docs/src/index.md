@@ -1,3 +1,8 @@
+```@autodocs
+Modules = [TGW3D]
+Order = [:module]
+```
+
 # Riferimenti
 
 Questa pagina ha i riferimenti a tutti i tipi, metodi e funzioni utilizzati.

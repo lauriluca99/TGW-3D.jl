@@ -8,7 +8,7 @@ Repository del progetto:
 https://github.com/lauriluca99/TGW-3D.jl
 
 Documentazione del progetto:
-https://lauriluca99.github.io/TGW-3D.jl/
+https://lauriluca99.github.io/TGW-3D.jl
 
 # Introduzione Linear Algebraic Rappresentation:
 

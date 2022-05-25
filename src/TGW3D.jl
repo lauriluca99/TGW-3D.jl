@@ -1,4 +1,12 @@
-"TGW3D module for spatial arrangement in LinearAlgebraicRepresentation"
+"""
+L’algoritmo Topological Gift Wrapping calcola le
+d-celle di una partizione di spazio generate da loro partendo da un
+oggetto geometrico d-1 dimensionale.
+
+TGW prende una matrice sparsa di dimensione d-1 in input e produce in
+output la matrice sparsa di dimensione d sconosciuta aumentata dalle
+celle esterne.
+"""
 module TGW3D
 
 using SparseArrays
@@ -31,13 +39,13 @@ const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
 
 """
-    frag\\_face\\_channel(
-        in_chan, 
-        out_chan, 
-        V::Points, 
-        EV::ChainOp, 
-        FE::ChainOp, 
-        sp_idx)
+    function frag_face_channel(
+            in_chan, 
+            out_chan, 
+            V::Points, 
+            EV::ChainOp, 
+            FE::ChainOp, 
+            sp_idx::Vector{Int64})
 
 Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
 """
@@ -54,14 +62,13 @@ function frag_face_channel(in_chan, out_chan, V::Points, EV, FE, sp_idx)
 end
 
 
-
 """
-    frag_face(
-		V::Points, 
-        EV::ChainOp, 
-        FE::ChainOp, 
-		sp_idx::Vector{Int64}, 
-        sigma::Int64)
+    function frag_face(
+		    V::Points, 
+            EV::ChainOp, 
+            FE::ChainOp, 
+		    sp_idx::Vector{Int64}, 
+            sigma::Int64)
 
 Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezioni con le facce in `sp_idx[sigma]`
 ed ottenere la disposizione 2D della faccia `sigma`.
@@ -98,14 +105,17 @@ end
 
 
 """
-    merge_vertices(
-        V::Points, 
-        EV::ChainOp, 
-        FE::ChainOp, 
-        [err=1e-4])
+    function merge_vertices(
+            V::Points, 
+            EV::ChainOp, 
+            FE::ChainOp, 
+            [err=1e-4])
 	
 Rimuove i vertici congruenti ad un singolo rappresentatante, traduce i lati per tener 
 conto della congruenza ed otteniene nuove facce congruenti.
+
+#### Agomenti addizionali:
+- `err`: Limite di errore che si vuole. Di Defaults a `1e-4`.
 """
 function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
    vertsnum = size(V, 1)
@@ -197,7 +207,7 @@ end
 
 
 """
-    function spatial\\_arrangement\\_1(
+    function spatial_arrangement_1(
 			V::Points,
 			copEV::ChainOp,
 			copFE::ChainOp, 
@@ -205,7 +215,9 @@ end
 			
 Si occupa del processo di frammentazione delle facce per l'utilizzo del planar arrangement.	
 Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertici, lati e facce.
-	
+
+#### Agomenti addizionali:
+- `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement_1(
 		V::Points,
@@ -268,9 +280,9 @@ function spatial_arrangement_1(
 end
 
 """
-	removeinnerloops(
-        g::Int64, 
-        nFE::ChainOp)
+	function removeinnerloops(
+            g::Int64, 
+            nFE::ChainOp)
 
 Rimuove le facce all'interno dei cicli interni dalla matrice sparsa nFE.
 Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
@@ -283,13 +295,16 @@ function removeinnerloops(g, nFE)
 end
 
 """
-    function spatial\\_arrangement\\_2(
-        rV::Points, 
-        rcopEV::ChainOp, 
-        rcopFE::ChainOp, 
-        [multiproc::Bool=false])
+    function spatial_arrangement_2(
+            rV::Points, 
+            rcopEV::ChainOp, 
+            rcopFE::ChainOp, 
+            [multiproc::Bool=false])
 			
 Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
+
+#### Agomenti addizionali:
+- `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 		
 """
 function spatial_arrangement_2(
@@ -305,7 +320,11 @@ end
 
 
 """
-    spatial_arrangement(V::Points, copEV::ChainOp, copFE::ChainOp; [multiproc::Bool])
+    function spatial_arrangement(
+            V::Points, 
+            copEV::ChainOp, 
+            copFE::ChainOp; 
+            [multiproc::Bool])
 
 Calcola la disposizione sulle cellule complesse 2-skeleton date	in 3D.
 														
@@ -314,7 +333,7 @@ del complesso è vuota e l'unione di tutte le celle rappresenta l'intero spazio 
 La funzione ritorna la piena disposizione complessa come una lista di vertici V e una catena di lati EV, FE, CF.
 Compute the arrangement on the given cellular complex 2-skeleton in 3D.
 
-## Agomenti addizionali:
+#### Agomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement(
