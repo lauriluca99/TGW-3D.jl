@@ -1012,7 +1012,7 @@ version = "1.3.0"
 
 [[deps.TGW3D]]
 deps = ["ArgParse", "BenchmarkTools", "CUDA", "DataStructures", "Distributed", "Documenter", "IntervalTrees", "JLD", "LightGraphs", "LinearAlgebra", "LinearAlgebraicRepresentation", "LoopVectorization", "NearestNeighbors", "OhMyREPL", "OrderedCollections", "Profile", "ProfileView", "Revise", "SparseArrays", "Traceur", "Triangle_jll", "Triangulate", "ViewerGL"]
-git-tree-sha1 = "6d64efb66ae57b5472c46bc96acfb81853370478"
+git-tree-sha1 = "9fb7f58906b0b0afac8b115bd12d731e7483ffeb"
 repo-rev = "master"
 repo-url = ".."
 uuid = "78a53d37-e61b-40f7-9049-cea10f8f1180"

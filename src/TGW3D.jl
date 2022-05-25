@@ -31,13 +31,13 @@ const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
 
 """
-frag\\_face\\_channel(
-    in_chan, 
-    out_chan, 
-    V::Points, 
-    EV::ChainOp, 
-    FE::ChainOp, 
-    sp_idx)
+    frag\\_face\\_channel(
+        in_chan, 
+        out_chan, 
+        V::Points, 
+        EV::ChainOp, 
+        FE::ChainOp, 
+        sp_idx)
 
 Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
 """
@@ -56,7 +56,7 @@ end
 
 
 """
-frag_face(
+    frag_face(
 		V::Points, 
         EV::ChainOp, 
         FE::ChainOp, 
@@ -98,11 +98,11 @@ end
 
 
 """
-merge_vertices(
-    V::Points, 
-    EV::ChainOp, 
-    FE::ChainOp, 
-    [err=1e-4])
+    merge_vertices(
+        V::Points, 
+        EV::ChainOp, 
+        FE::ChainOp, 
+        [err=1e-4])
 	
 Rimuove i vertici congruenti ad un singolo rappresentatante, traduce i lati per tener 
 conto della congruenza ed otteniene nuove facce congruenti.
@@ -197,7 +197,7 @@ end
 
 
 """
-function spatial\\_arrangement\\_1(
+    function spatial\\_arrangement\\_1(
 			V::Points,
 			copEV::ChainOp,
 			copFE::ChainOp, 
@@ -283,13 +283,13 @@ function removeinnerloops(g, nFE)
 end
 
 """
-function spatial\\_arrangement\\_2(
-    rV::Points, 
-    rcopEV::ChainOp, 
-    rcopFE::ChainOp, 
-    [multiproc::Bool=false])
+    function spatial\\_arrangement\\_2(
+        rV::Points, 
+        rcopEV::ChainOp, 
+        rcopFE::ChainOp, 
+        [multiproc::Bool=false])
 			
-    Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
+Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 		
 """
 function spatial_arrangement_2(
