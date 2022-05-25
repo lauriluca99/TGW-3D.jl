@@ -64,10 +64,10 @@ end
 
 """
     function frag_face(
-		    V::Points, 
+            V::Points, 
             EV::ChainOp, 
             FE::ChainOp, 
-		    sp_idx::Vector{Int64}, 
+	        sp_idx::Vector{Int64}, 
             sigma::Int64)
 
 Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezioni con le facce in `sp_idx[sigma]`
@@ -114,8 +114,8 @@ end
 Rimuove i vertici congruenti ad un singolo rappresentatante, traduce i lati per tener 
 conto della congruenza ed otteniene nuove facce congruenti.
 
-#### Agomenti addizionali:
-- `err`: Limite di errore che si vuole. Di Defaults a `1e-4`.
+#### Argomenti addizionali:
+- `err`: Limite di errore massimo che si vuole utilizzare. Di Defaults a `1e-4`.
 """
 function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
    vertsnum = size(V, 1)
@@ -208,15 +208,15 @@ end
 
 """
     function spatial_arrangement_1(
-			V::Points,
-			copEV::ChainOp,
-			copFE::ChainOp, 
+            V::Points,
+            copEV::ChainOp,
+            copFE::ChainOp, 
             [multiproc::Bool=false])
 			
 Si occupa del processo di frammentazione delle facce per l'utilizzo del planar arrangement.	
 Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertici, lati e facce.
 
-#### Agomenti addizionali:
+#### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement_1(
@@ -303,7 +303,7 @@ end
 			
 Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 
-#### Agomenti addizionali:
+#### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 		
 """
@@ -331,9 +331,8 @@ Calcola la disposizione sulle cellule complesse 2-skeleton date	in 3D.
 Un complesso cellulare è disposto quando l'intersezione di ogni coppia di celle
 del complesso è vuota e l'unione di tutte le celle rappresenta l'intero spazio Euclideo.
 La funzione ritorna la piena disposizione complessa come una lista di vertici V e una catena di lati EV, FE, CF.
-Compute the arrangement on the given cellular complex 2-skeleton in 3D.
 
-#### Agomenti addizionali:
+#### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement(
