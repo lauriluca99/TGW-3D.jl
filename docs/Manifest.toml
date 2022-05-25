@@ -551,9 +551,9 @@ version = "3.0.0+1"
 
 [[deps.LLVM]]
 deps = ["CEnum", "LLVMExtra_jll", "Libdl", "Printf", "Unicode"]
-git-tree-sha1 = "c8d47589611803a0f3b4813d9e267cd4e3dbcefb"
+git-tree-sha1 = "8c0b65f65ac27cf293c13089df78081b93790fa7"
 uuid = "929cbde3-209d-540e-8aea-75f648917ca0"
-version = "4.11.1"
+version = "4.12.0"
 
 [[deps.LLVMExtra_jll]]
 deps = ["Artifacts", "JLLWrappers", "LazyArtifacts", "Libdl", "Pkg", "TOML"]
@@ -776,9 +776,9 @@ uuid = "ca575930-c2e3-43a9-ace4-1e988b2c1908"
 
 [[deps.OffsetArrays]]
 deps = ["Adapt"]
-git-tree-sha1 = "52addd9e91df8a6a5781e5c7640787525fd48056"
+git-tree-sha1 = "9cf6b82f7f337c01eac9995be43d11483dee5d7b"
 uuid = "6fe1bfb0-de20-5000-8ca7-80f57d26f881"
-version = "1.11.2"
+version = "1.12.0"
 
 [[deps.OhMyREPL]]
 deps = ["Crayons", "JLFzf", "Markdown", "Pkg", "Printf", "REPL", "Tokenize"]
@@ -1012,7 +1012,7 @@ version = "1.3.0"
 
 [[deps.TGW3D]]
 deps = ["ArgParse", "BenchmarkTools", "CUDA", "DataStructures", "Distributed", "Documenter", "IntervalTrees", "JLD", "LightGraphs", "LinearAlgebra", "LinearAlgebraicRepresentation", "LoopVectorization", "NearestNeighbors", "OhMyREPL", "OrderedCollections", "Profile", "ProfileView", "Revise", "SparseArrays", "Traceur", "Triangle_jll", "Triangulate", "ViewerGL"]
-git-tree-sha1 = "0999b7b4917add29db5392d1fa031c479ab06024"
+git-tree-sha1 = "6d64efb66ae57b5472c46bc96acfb81853370478"
 repo-rev = "master"
 repo-url = ".."
 uuid = "78a53d37-e61b-40f7-9049-cea10f8f1180"

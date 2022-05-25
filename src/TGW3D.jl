@@ -6,7 +6,6 @@ using LinearAlgebra
 using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
 
-#export Points, ChainOp, frag_face_channel, frag_face, merge_vertices, spatial_arrangement_1, spatial_arrangement_2, spatial_arrangement, removeinnerloops
 """
 	Points = Array{Number,2}
 
@@ -32,7 +31,7 @@ const ChainOp = SparseArrays.SparseMatrixCSC{Int8,Int}
 
 
 """
-frag\_face\_channel(
+frag\\_face\\_channel(
     in_chan, 
     out_chan, 
     V::Points, 
@@ -198,7 +197,7 @@ end
 
 
 """
-function spatial\_arrangement\_1(
+function spatial\\_arrangement\\_1(
 			V::Points,
 			copEV::ChainOp,
 			copFE::ChainOp, 
@@ -284,13 +283,13 @@ function removeinnerloops(g, nFE)
 end
 
 """
-function spatial\_arrangement\_2(
+function spatial\\_arrangement\\_2(
     rV::Points, 
     rcopEV::ChainOp, 
     rcopFE::ChainOp, 
     [multiproc::Bool=false])
 			
-	TODO
+    Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 		
 """
 function spatial_arrangement_2(

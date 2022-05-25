@@ -7,6 +7,9 @@ Luca Maria Lauricella e Valerio Marini
 Repository del progetto:
 https://github.com/lauriluca99/TGW-3D.jl
 
+Documentazione del progetto:
+https://lauriluca99.github.io/TGW-3D.jl/
+
 # Introduzione Linear Algebraic Rappresentation:
 
 LAR è uno schema rappresentativo per modelli geometrici e topologici. Il
@@ -62,10 +65,11 @@ L'algoritmo TGW 3D è implementato all'interno del file spatial_arrangement.jl
 
 ![Grafo delle Dipendenze di spatial_arrangement.jl](images/media/image3.png)
 
-#### Funzioni presenti:
+### Funzioni presenti
 
- 
-**spatial\_arrangement:**
+
+
+#### **spatial\_arrangement:**
 
 Calcola la partizione dei complessi cellulari dati, con scheletro di
 dimensione 2, in 3D.
@@ -76,7 +80,7 @@ celle è l’insieme dello spazio Euclideo. La funzione ritorna la
 partizione complessa come una lista di vertici V e una catena di bordi
 EV, FE, CF.
 
-*spatial\_arrangement\_1:*
+#### *spatial\_arrangement\_1:*
 
 Si occupa del processo di frammentazione delle facce per l’utilizzo del
 planar arrangement.
@@ -115,7 +119,7 @@ planar arrangement.
 
 > Effettua l’unione dei vertici, dei lati e delle facce vicine.
 
-*biconnected\_components:*
+#### *biconnected\_components:*
 
 Calcola le componenti biconnesse del grafo EV rappresenato da bordi,
 ovvero coppie di vertici.
@@ -145,7 +149,7 @@ ovvero coppie di vertici.
 
 > Ordina la matrice e ne ritorna una copia.
 
-*spatial\_arrangement\_2:*
+#### *spatial\_arrangement\_2:*
 
 Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 3D.
@@ -167,13 +171,11 @@ Nello studio esecutivo abbiamo analizzato il codice nei notebooks cercando delle
 ottimizzazioni. Non è stato possibile ottimizzare tutte le funzioni, infatti le principali
 modifiche sono state effettuate nelle funzioni:  **frag\_face** e **merge\_vertices**.
 
-Inoltre sul sistema operativo Windows si sono riscontrati diversi problemi con delle librerie.
-
 Per migliorare il codice, sono stati presi in considerazione i libri: *Julia High Performance* e 
 *Hands-On Julia Programming*, nei quali vengono menzionate le seguenti macro 
 per migliorare le performance e la stabilità del codice:
 
-- @async: racchiude l'espressione in un Task ed 
+- `@async`: racchiude l'espressione in un Task ed 
 inizierà con l'esecuzione di questa attività
 procedendo con qualsiasi altra cosa venga dopo nello script, senza aspettare 
 che il Task termini.
@@ -241,7 +243,7 @@ inferiore di circa 20% dalla versione originale.
 Anche per quanto riguarda questa funzione abbiamo effettuato un controllo su i vari tipi di variabili assegnati utilizzando 
 la macro `@code_warntype`, questa volta però non erano presenti variabili di tipo `Any` che ci avrebbero dunque destabilizzato
 i tipi della funzione. Per ottimizzare quest’ ultima abbiamo, un’altra volta, introdotto opportunamente davanti ai cicli *for* 
-la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso di avere un'ottimizzazione del 10% sul tempo di
+la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso di avere un'ottimizzazione del 30% sul tempo di
 esecuzione.
 
 
@@ -250,6 +252,14 @@ esecuzione.
 Notiamo in seguito come vengono modificati i tempi dopo l'ottimizzazione.
 
 ![Benchmark della funzione modificata](images/media/image9.png)
+
+### Azioni Github
+Grazie all'utilizzo del libro *Hands-On Julia Programming*, in particolare il capitolo 13, si sono costruite diverse `Actions` di Github,
+le quali eseguono delle istruzioni specifiche quando Github rileva gli eventi di attivazione corrispondenti. 
+Ogni volta che c'è un nuovo `push` sul branch `master`, viene effettuata una simulazione per verificare che il modulo 
+`TGW3D.jl` venga correttamente aggiunto sui sistemi operativi Ubuntu (x86 e x64), Windows (x86 e x64) e macOS (x64). 
+Inoltre, tramite la libreria `Documenter.jl`, viene presa la documentazione del nostro progetto ed inserita sulla pagina di Github
+corrispondente.
 
 
 # Studio definitivo
