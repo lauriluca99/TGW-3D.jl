@@ -1,8 +1,9 @@
+% Relazione LAR TGW 3D - Gruppo 8b
+% Luca Maria Lauricella; Valerio Marini;
+% \today
+
 Progetto relativo al Corso di Calcolo Parallelo e Distribuito del 
 Prof. Paoluzzi presso l'Università Roma Tre.
-
-Membri del team:
-Luca Maria Lauricella e Valerio Marini
 
 Repository del progetto:
 https://github.com/lauriluca99/TGW-3D.jl

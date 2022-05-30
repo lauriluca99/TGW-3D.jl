@@ -3,6 +3,7 @@ using LinearAlgebraicRepresentation
 Lar = LinearAlgebraicRepresentation
 
 include("../CAGD.jl/CAGD.jl")
+include("../src/TGW3D.jl")
 
 function generateCubeGrids(n=1, m=1, p=1)
     V,(VV,EV,FV,CV) = Lar.cuboidGrid([n,m,p],true)
@@ -18,9 +19,9 @@ function generateCubeGrids(n=1, m=1, p=1)
     CAGD.addModelCells!(model, 1, cop_EV)
     CAGD.addModelCells!(model, 2, cop_FE)
 
-    return model
+    return V, cop_EV, cop_FE
 end
 
-m = generateCubeGrids(1, 1, 2)
+V, EV, FE = generateCubeGrids(1, 1, 1)
 
-@btime CAGD.spatial_arrangement(m)
+@btime TGW3D.spatial_arrangement(V, EV, FE)
