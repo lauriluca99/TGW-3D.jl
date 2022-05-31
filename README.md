@@ -1,4 +1,4 @@
-[![Build](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/ci.yml)
+[![Build](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Build.yml/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Build.yml)
 [![Documentation](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Documentation.yml/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Documentation.yml)
 [![Github Pages](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/pages/pages-build-deployment)
 
