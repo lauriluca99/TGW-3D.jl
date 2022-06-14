@@ -24,7 +24,17 @@ mybox = (V,CV,FV,EV);
 str = Lar.Struct(store);
 V,CV,FV,EV = Lar.struct2lar(str);
 
-#GL.VIEW([ GL.GLPol(V,CV, GL.COLORS[2], 0.1) ]);
+"""
+open("/tmp/lar.txt", "w") do f
+	write(f, "V = $V\n\n")
+	write(f, "CV = $CV\n\n")
+	write(f, "FV = $FV\n\n")
+	write(f, "EV = $EV\n\n")
+	close(f)
+end
+"""
+
+GL.VIEW([ GL.GLPol(V,CV, GL.COLORS[2], 0.1) ]);
 
 function testarrangement(V,CV,FV,EV)
 		cop_EV = Lar.coboundary_0(EV::Lar.Cells);

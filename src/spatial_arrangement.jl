@@ -11,7 +11,7 @@ Lar = LinearAlgebraicRepresentation
             FE::ChainOp, 
             sp_idx::Vector{Int64})
 
-Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
+Funzione che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
 """
 function frag_face_channel(in_chan, out_chan, V::Points, EV, FE, sp_idx)
     run_loop = true
