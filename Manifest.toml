@@ -685,7 +685,7 @@ deps = ["Libdl", "libblastrampoline_jll"]
 uuid = "37e2e46d-f89d-539d-b4ee-838fcccc9c8e"
 
 [[deps.LinearAlgebraicRepresentation]]
-deps = ["DataStructures", "Distributed", "IntervalTrees", "LinearAlgebra", "NearestNeighbors", "SparseArrays", "Triangle"]
+deps = ["DataStructures", "Distributed", "IntervalTrees", "LinearAlgebra", "NearestNeighbors", "SparseArrays", "Triangulate"]
 git-tree-sha1 = "3f15a9382a42b9821144affd3855fe6f8153c9f2"
 uuid = "95167b0c-186a-594b-a231-52369c6de044"
 version = "1.0.0"
@@ -1067,12 +1067,6 @@ deps = ["Random", "Test"]
 git-tree-sha1 = "216b95ea110b5972db65aa90f88d8d89dcb8851c"
 uuid = "3bb67fe8-82b1-5028-8e26-92a6c54297fa"
 version = "0.9.6"
-
-[[deps.Triangle]]
-deps = ["BinDeps", "Libdl"]
-git-tree-sha1 = "ddfa28d6c66ee8e195680a8c419f3cf230b7c91e"
-uuid = "56f361f5-126b-55db-87fb-1c71988fcde4"
-version = "0.3.1"
 
 [[deps.Triangle_jll]]
 deps = ["Artifacts", "JLLWrappers", "Libdl", "Pkg"]
