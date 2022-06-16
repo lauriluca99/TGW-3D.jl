@@ -19,17 +19,17 @@ Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle fa
 
 
 # Input
--  'in_chan' 
--  'out_chan' 
--  'V::Points' 
--  'EV::ChainOp' 
--  'FE::ChainOp'
--  'sp_idx::Vector{Int64}'
+-  `in_chan` 
+-  `out_chan` 
+-  `V::Points` 
+-  `EV::ChainOp` 
+-  `FE::ChainOp`
+-  `sp_idx::Vector{Int64}`
 # Output
 - `V::Points`
 - `EV::ChainOp`
 """
-function frag_face_channel(in_chan, out_chan, V, EV, FE, sp_idx)
+function frag_face_channel(in_chan, out_chan, V::Points, EV::ChainOp, FE::ChainOp, sp_idx::Vector{Int64})
     run_loop = true
     while run_loop 
         
@@ -56,11 +56,11 @@ Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezion
 ed ottenere la disposizione 2D della faccia `sigma`.
 
 # Input
--  'V::Points' 
--  'EV::ChainOp' 
--  'FE::ChainOp'
--  'sp_idx::Vector{Int64}'
--  'sigma::Int64'
+-  `V::Points`
+-  `EV::ChainOp` 
+-  `FE::ChainOp`
+-  `sp_idx::Vector{Int64}`
+-  `sigma::Int64`
 # Output
 - `nV::Points`
 - `nEV::ChainOp`
@@ -95,12 +95,18 @@ function frag_face(V::Points, EV::ChainOp, FE::ChainOp,
     
     return nV, nEV, nFE
 end
+
+
 """
+    function filter_fn(face)
+
+    Funzione di filtro per la funzione `merge_vertices`. La funzione `filter_fn` prende in input una faccia
+    e restituisce `true` se i vertici della faccia non sono stati visitati, `false` altrimenti.
 # Input
--  'face::Vector{Tuple{Int64, Int64}}' 
+-  `face::Vector{Tuple{Int64, Int64}}` 
 
 # Output
-- `false::Bool`
+- `true/false::Bool`
 
 """
 function filter_fn(face)
@@ -131,10 +137,10 @@ conto della congruenza ed otteniene nuove facce congruenti.
 - `err`: Limite di errore massimo che si vuole utilizzare. Di Defaults a `1e-4`.
 
 # Input
--  'V::Points' 
--  'EV::ChainOp' 
--  'FE::ChainOp'
--  'err=1e-4'
+-  `V::Points` 
+-  `EV::ChainOp` 
+-  `FE::ChainOp`
+-  `err=1e-4`
 # Output
 - `nV::Points`
 - `nEV::ChainOp`
@@ -234,10 +240,10 @@ Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertic
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 
 # Input
--  'V::Points' 
--  'copEV::ChainOp' 
--  'copFE::ChainOp'
--  'multiproc::Bool=false'
+-  `V::Points` 
+-  `copEV::ChainOp` 
+-  `copFE::ChainOp`
+-  `multiproc::Bool=false`
 # Output
 - `rV::Points`
 - `rEV::ChainOp`
@@ -281,10 +287,10 @@ Rimuove le facce all'interno dei cicli interni dalla matrice sparsa nFE.
 Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
 
 # Input
--  'g::Int' 
--  'nFE::ChainOp'
+-  `g::Int` 
+-  `nFE::ChainOp`
 # Output
-- '...'
+- `nFE::ChainOp`
 """
 function removeinnerloops(g, nFE)
 	# optimized solution (to check): remove the last `g` rows
@@ -294,11 +300,14 @@ end
 								
 								
 """
+    function face_angle(e::Int, f::Int)
+    
+Funzione che calcola l'angolo di una faccia `f` rispetto allo spigolo `e`.
 # Input
--  'e::Int' 
--  'f::Int'
+-  `e::Int` 
+-  `f::Int`
 # Output
-- 'angle::Matrix'
+- `angle::Matrix`
 """
 function face_angle(e::Int, f::Int)
 
@@ -331,11 +340,11 @@ end
 
 """
 # Input
--  'V::Points' 
--  'EV::ChainOp' 
--  'FE::ChainOp'
+-  `V::Points`
+-  `EV::ChainOp` 
+-  `FE::ChainOp`
 # Output
-- 'transpose(FC::ChainOp)'
+- `FC::ChainOp`
 """
 function minimal_3cycles(V::Points, EV::ChainOp, FE::ChainOp)
 
@@ -365,15 +374,15 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 		
 
 # Input
--  'rV::Points' 
--  'rcopEV::ChainOp' 
--  'rcopFE::ChainOp'
--  'multiproc::Bool=false'
+-  `rV::Points` 
+-  `rcopEV::ChainOp` 
+-  `rcopFE::ChainOp`
+-  `multiproc::Bool=false`
 # Output
--  'rV::Points' 
--  'rcopEV::ChainOp' 
--  'rcopFE::ChainOp'
--  'multiproc::Bool=false'
+-  `rV::Points` 
+-  `rcopEV::ChainOp` 
+-  `rcopFE::ChainOp`
+-  `multiproc::Bool=false`
 """
 function spatial_arrangement_2(
     rV::Points,
@@ -406,12 +415,15 @@ La funzione ritorna la piena disposizione complessa come una lista di vertici V 
 												
 												
 # Input
--  'V::Points' 
--  'copEV::ChainOp' 
--  'copFE::ChainOp'
--  'multiproc::Bool=false'
+-  `V::Points` 
+-  `copEV::ChainOp` 
+-  `copFE::ChainOp`
+-  `multiproc::Bool=false`
 # Output
--  '...' 
+-  `rV::Points`
+-  `rEV::ChainOp`
+-  `rFE::ChainOp`
+-  `rCF::ChainOp` 
 
 """
 function spatial_arrangement(
@@ -423,8 +435,7 @@ function spatial_arrangement(
 # face subdivision
 rV::Points, rcopEV::ChainOp, rcopFE::ChainOp = spatial_arrangement_1(V, copEV, copFE, multiproc)
 
-bicon_comps = Lar.Arrangement.biconnected_components(rcopEV)
-
+# face reconstruction
 rV, rEV::ChainOp, rFE::ChainOp, rCF::ChainOp = spatial_arrangement_2(rV, rcopEV, rcopFE)
 
 end
