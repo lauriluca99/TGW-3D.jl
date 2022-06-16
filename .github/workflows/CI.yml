@@ -39,18 +39,7 @@ jobs:
         with:
           version: ${{ matrix.version }}
           arch: ${{ matrix.arch }}
-      - run: println("::set-output name=manifest_version::$(VERSION.major).$(VERSION.minor)")
-        shell: julia --color=yes --project=.ci/ {0}
-        id: manifest_version
-      - run: echo "The manifest is .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml"
-      - run: rm -rf .ci/Manifest.toml
-      - run: mv .ci/Manifest.${{ steps.manifest_version.outputs.manifest_version }}.toml .ci/Manifest.toml
-      - run: rm -rf .ci/Manifest.*.toml
-      - run: chmod 400 .ci/Project.toml
-      - run: chmod 400 .ci/Manifest.toml
-        if: ${{ matrix.version != 'nightly' }}
-      - name: Cache artifacts and packages
-        uses: actions/cache@1a9e2138d905efd099035b49d8b7a3888c653ca8 # v2.1.5
+      - uses: actions/cache@v1
         env:
           cache-name: cache-artifacts
         with:
@@ -60,10 +49,9 @@ jobs:
             ${{ runner.os }}-test-${{ env.cache-name }}-
             ${{ runner.os }}-test-
             ${{ runner.os }}-
-      - run: julia --color=yes -e 'import Pkg; Pkg.Registry.add("General")'
-        env:
-          JULIA_PKG_SERVER: ""
-      - run: julia --color=yes -e 'import Pkg; Pkg.Registry.update()'
-      - run: .ci/instantiate.sh
-      - run: julia --color=yes --project=.ci/ -e 'import Pkg; Pkg.precompile()'
-      - run: julia --color=yes --project=.ci/ -e 'import RegistryCI; RegistryCI.test()'
+      - uses: julia-actions/julia-buildpkg@v1
+      - uses: julia-actions/julia-runtest@v1
+      - uses: julia-actions/julia-processcoverage@v1
+      - uses: codecov/codecov-action@v1
+        with:
+          file: lcov.info
