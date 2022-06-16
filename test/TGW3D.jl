@@ -1,7 +1,8 @@
-using LinearAlgebraicRepresentation
-Lar=LinearAlgebraicRepresentation
 using TGW3D
 using Test
+using LinearAlgebraicRepresentation
+Lar=LinearAlgebraicRepresentation
+
 
 V = [0.3229956 0.8459234 0.3091824 0.8321101 0.3233606 0.8462884 0.3095474 0.8324751 0.822632 0.8740866 0.8719075 0.923362 0.9865184 1.0379729 1.0357938 1.0872484; 
     0.5770385 0.5632252 0.0548407 0.0410274 0.6046603 0.590847 0.0824624 0.0686491 0.4321656 0.4814411 0.591786 0.6410615 0.368702 0.4179775 0.5283224 0.5775979; 
@@ -13,7 +14,7 @@ EV = [[1, 2], [3, 4], [5, 6], [7, 8], [1, 3], [2, 4], [5, 7], [6, 8], [1, 5], [2
 cop_EV = Lar.coboundary_0(EV::Lar.Cells)
 cop_FE = Lar.coboundary_1(V, FV::Lar.Cells, EV::Lar.Cells)
 W = convert(Lar.Points, V')
-TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
+#TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
 
 
 
@@ -28,7 +29,7 @@ TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
 
     err = nothing
     try
-        @inferred TGW3D.merge_vertices(V, EV, FE, err=1e-4)
+        @inferred TGW3D.merge_vertices(V, EV, FE, 1e-4)
     catch err
     end
     @test isa(err, ErrorException) == false
@@ -36,14 +37,22 @@ TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
     err = nothing
     try
         @inferred TGW3D.spatial_arrangement_1(
-            V,copEV,copFE, multiproc=false)
+            W, cop_EV, cop_FE, multiproc=false)
     catch err
     end
     @test isa(err, ErrorException) == false
 
     err = nothing
     try
-        @inferred TGW3D.minimal_3cycles(V, EV, FE)
+        @inferred TGW3D.minimal_3cycles(W, cop_EV, cop_FE)
+
+    catch err
+    end
+    @test isa(err, ErrorException) == false
+
+    err = nothing
+    try
+        @inferred TGW3D.spatial_arrangement_2(W, cop_EV, cop_FE)
 
     catch err
     end
@@ -52,7 +61,7 @@ TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
     err = nothing
     try
         @inferred TGW3D.spatial_arrangement(
-            V, copEV, copFE, multiproc=false)
+            W, cop_EV, cop_FE, multiproc=false)
     catch err
     end
     @test isa(err, ErrorException) == false

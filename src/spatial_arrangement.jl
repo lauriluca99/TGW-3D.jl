@@ -3,7 +3,7 @@ using SparseArrays
 using NearestNeighbors
 using LinearAlgebra
 using LinearAlgebraicRepresentation
-Lar=LinearAlgebraicRepresentation
+Lar = LinearAlgebraicRepresentation
 
 
 """
@@ -18,7 +18,20 @@ Lar=LinearAlgebraicRepresentation
 Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
 """
 
-
+function frag_face_channel(in_chan, out_chan, V, EV, FE, sp_idx)
+    run_loop = true
+    while run_loop 
+        
+        sigma = take!(in_chan)
+        
+        if sigma != -1
+            put!(out_chan,Lar.Arrangement.frag_face(V, EV, FE, sp_idx, sigma))
+        else
+            run_loop = false
+        end
+    end
+    return V,EV
+end
 
 """
     function frag_face(
@@ -314,16 +327,17 @@ La funzione ritorna la piena disposizione complessa come una lista di vertici V 
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 """
 function spatial_arrangement(
-    V::Points, # by rows
+    V::Points, 
     copEV::ChainOp,
     copFE::ChainOp, 
     multiproc::Bool=false)
 
 # face subdivision
-rV::Points, rcopEV::ChainOp, rcopFE::ChainOp = spatial_arrangement_1( V,copEV,copFE,multiproc )
+rV::Points, rcopEV::ChainOp, rcopFE::ChainOp = spatial_arrangement_1(V, copEV, copFE, multiproc)
 
 bicon_comps = Lar.Arrangement.biconnected_components(rcopEV)
 
 rV, rEV::ChainOp, rFE::ChainOp, rCF::ChainOp = spatial_arrangement_2(rV, rcopEV, rcopFE)
+
 end
 

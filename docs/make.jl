@@ -6,12 +6,19 @@ end
 using Documenter, TGW3D
 
 makedocs(
-    format = Documenter.HTML(),
+    format = Documenter.HTML(
+	 prettyurls = get(ENV, "CI", nothing) == "true"
+	),
     modules = [TGW3D],
-    sitename = "TGW3D",
+    sitename = "TGW3D.jl",
     pages = [
         "README.md",
-        "API Reference" => "index.md"
+		"Introduzione a LAR" => "intro.md",
+        "Riferimenti API" => "index.md",
+		"Relazioni" => [
+            "Studio Preliminare" => "studioPreliminare.md",
+			"Studio Esecutivo" => "studioEsecutivo.md"
+			]
         ]
     )
 
