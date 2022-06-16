@@ -16,8 +16,19 @@ Lar = LinearAlgebraicRepresentation
             sp_idx::Vector{Int64})
 
 Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
-"""
 
+
+# Input
+-  'in_chan' 
+-  'out_chan' 
+-  'V::Points' 
+-  'EV::ChainOp' 
+-  'FE::ChainOp'
+-  'sp_idx::Vector{Int64}'
+# Output
+- `V::Points`
+- `EV::ChainOp`
+"""
 function frag_face_channel(in_chan, out_chan, V, EV, FE, sp_idx)
     run_loop = true
     while run_loop 
@@ -43,6 +54,17 @@ end
 
 Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezioni con le facce in `sp_idx[sigma]`
 ed ottenere la disposizione 2D della faccia `sigma`.
+
+# Input
+-  'V::Points' 
+-  'EV::ChainOp' 
+-  'FE::ChainOp'
+-  'sp_idx::Vector{Int64}'
+-  'sigma::Int64'
+# Output
+- `nV::Points`
+- `nEV::ChainOp`
+- `nFE::ChainOp`
 """
 function frag_face(V::Points, EV::ChainOp, FE::ChainOp, 
     sp_idx::Vector{Vector{Int64}}, sigma::Int64)
@@ -73,8 +95,14 @@ function frag_face(V::Points, EV::ChainOp, FE::ChainOp,
     
     return nV, nEV, nFE
 end
+"""
+# Input
+-  'face::Vector{Tuple{Int64, Int64}}' 
 
+# Output
+- `false::Bool`
 
+"""
 function filter_fn(face)
     visited = []
     verts = []
@@ -101,6 +129,16 @@ conto della congruenza ed otteniene nuove facce congruenti.
 
 #### Argomenti addizionali:
 - `err`: Limite di errore massimo che si vuole utilizzare. Di Defaults a `1e-4`.
+
+# Input
+-  'V::Points' 
+-  'EV::ChainOp' 
+-  'FE::ChainOp'
+-  'err=1e-4'
+# Output
+- `nV::Points`
+- `nEV::ChainOp`
+- `nFE::ChainOp`
 """
 function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
     vertsnum = size(V, 1)
@@ -194,6 +232,16 @@ Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertic
 
 #### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
+
+# Input
+-  'V::Points' 
+-  'copEV::ChainOp' 
+-  'copFE::ChainOp'
+-  'multiproc::Bool=false'
+# Output
+- `rV::Points`
+- `rEV::ChainOp`
+- `rFE::ChainOp`
 """
 function spatial_arrangement_1(
     V::Points,
@@ -232,14 +280,26 @@ end
 Rimuove le facce all'interno dei cicli interni dalla matrice sparsa nFE.
 Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
 
+# Input
+-  'g::Int' 
+-  'nFE::ChainOp'
+# Output
+- '...'
 """
 function removeinnerloops(g, nFE)
 	# optimized solution (to check): remove the last `g` rows
 	FE = Lar.cop2lar(nFE)
 	nFE = Lar.lar2cop(FE[1:end-g])
 end
-
-
+								
+								
+"""
+# Input
+-  'e::Int' 
+-  'f::Int'
+# Output
+- 'angle::Matrix'
+"""
 function face_angle(e::Int, f::Int)
 
     edge_vs = EV[e, :].nzind
@@ -269,7 +329,14 @@ function face_angle(e::Int, f::Int)
     return angle
 end
 
-
+"""
+# Input
+-  'V::Points' 
+-  'EV::ChainOp' 
+-  'FE::ChainOp'
+# Output
+- 'transpose(FC::ChainOp)'
+"""
 function minimal_3cycles(V::Points, EV::ChainOp, FE::ChainOp)
 
 	triangulated_faces = Array{Any, 1}(undef, FE.m)
@@ -296,6 +363,17 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 #### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 		
+
+# Input
+-  'rV::Points' 
+-  'rcopEV::ChainOp' 
+-  'rcopFE::ChainOp'
+-  'multiproc::Bool=false'
+# Output
+-  'rV::Points' 
+-  'rcopEV::ChainOp' 
+-  'rcopFE::ChainOp'
+-  'multiproc::Bool=false'
 """
 function spatial_arrangement_2(
     rV::Points,
@@ -325,6 +403,16 @@ La funzione ritorna la piena disposizione complessa come una lista di vertici V 
 
 #### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
+												
+												
+# Input
+-  'V::Points' 
+-  'copEV::ChainOp' 
+-  'copFE::ChainOp'
+-  'multiproc::Bool=false'
+# Output
+-  '...' 
+
 """
 function spatial_arrangement(
     V::Points, 
