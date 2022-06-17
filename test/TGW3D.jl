@@ -30,7 +30,29 @@ TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
 
     err = nothing
     try
+        @inferred TGW3D.frag_face_channel(in_chan, out_chan, 
+            V, EV, FE, 2)
+    catch err
+    end
+    @test isa(err, ErrorException) == false
+
+    err = nothing
+    try
         @inferred TGW3D.merge_vertices(V, EV, FE, err=1e-4)
+    catch err
+    end
+    @test isa(err, ErrorException) == false
+
+    err = nothing
+    try
+        @inferred TGW3D.removeinnerloops(2, FE)
+    catch err
+    end
+    @test isa(err, ErrorException) == false
+
+    err = nothing
+    try
+        @inferred TGW3D.face_angle(2, 3)
     catch err
     end
     @test isa(err, ErrorException) == false
@@ -54,14 +76,14 @@ TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
     err = nothing
     try
         @inferred TGW3D.spatial_arrangement(
-            V, copEV, copFE, multiproc=false)
+            V, copEV, copFE, false)
+        @inferred TGW3D.spatial_arrangement(
+                V, copEV, copFE, false)
     catch err
     end
     @test isa(err, ErrorException) == false
 
 end
-
-
 
 
 # questa funzione ci mostra come ogni colonna della matrice sparsa di EV contiene sempre un 1 e un -1
@@ -89,6 +111,23 @@ end
 @testset "test incidenze" begin
     @test mx[1,1]== -1
     @test mx[2,1]== 1
-
 end
+
+# test per verificare la consistenza dei risultati
+@testset "test spatial_arrangement" begin
+    rV, rcopEV, rcopFE = TGW3D.spatial_arrangement_1(W, cop_EV, cop_FE, false) 
+    rV1, rcopEV1, rcopFE1 = Lar.Arrangement.spatial_arrangement_1(W, cop_EV, cop_FE, false)
+    @test rV != rV1
+    @test rcopEV != rcopEV1
+    @test rcopFE != rcopFE1
+    rV, rEV, rFE, rCF = TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
+    rV1, rEV1, rFE1, rCF1 = Lar.Arrangement.spatial_arrangement(W, cop_EV, cop_FE, false)
+    @test rV == rV1
+    @test rEV == rEV1
+    @test rFE == rFE1
+    @test rCF == rCF1
+    
+end
+
+
 

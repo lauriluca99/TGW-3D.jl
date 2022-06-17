@@ -1,31 +1,3 @@
-% Relazione LAR TGW 3D - Gruppo 8b
-% Luca Maria Lauricella; Valerio Marini;
-% \today
-
-Progetto relativo al Corso di Calcolo Parallelo e Distribuito del 
-Prof. Paoluzzi presso l'Università Roma Tre.
-
-Repository del progetto:
-https://github.com/lauriluca99/TGW-3D.jl
-
-Documentazione del progetto:
-https://lauriluca99.github.io/TGW-3D.jl
-
-
-# Obiettivo del progetto
-In questo progetto si vuole ottimizzare e parallelizzare il codice dell'algoritmo TGW 3D presente
-nella libreria LinearAlgebraicRappresentation.jl 
-
-## **TGW 3D**
-
-L’algoritmo Topological Gift Wrapping calcola le
-d-celle di una partizione di spazio generate da loro partendo da un
-oggetto geometrico d-1 dimensionale.
-
-TGW prende una matrice sparsa di dimensione d-1 in input e produce in
-output la matrice sparsa di dimensione d sconosciuta aumentata dalle
-celle esterne.
-
 # Studio Preliminare
 
 ## spatial_arrangement.jl

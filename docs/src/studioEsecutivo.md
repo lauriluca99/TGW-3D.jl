@@ -1,16 +1,3 @@
-% Relazione LAR TGW 3D - Gruppo 8b
-% Luca Maria Lauricella; Valerio Marini;
-% \today
-
-Progetto relativo al Corso di Calcolo Parallelo e Distribuito del 
-Prof. Paoluzzi presso l'Università Roma Tre.
-
-Repository del progetto:
-https://github.com/lauriluca99/TGW-3D.jl
-
-Documentazione del progetto:
-https://lauriluca99.github.io/TGW-3D.jl
-
 # Studio esecutivo
 
 Nello studio esecutivo abbiamo analizzato il codice nei notebooks cercando delle possibili 
@@ -59,7 +46,21 @@ Utilizzando la macro `@code_warntype` si individuano molte variabili assegnate a
 Questo significa essenzialmente che ci sarà un'allocazione per la posizione della memoria e 
 l'indirezione al valore effettivo durante l'esecuzione della funzione.
 
-![Benchmark della funzione originale](assets/image4.png)
+```julia
+@benchmark frag_face(Lar.Points(V),EV,FE,[2,3,4,5],2)
+
+BenchmarkTools.Trial: 8171 samples with 1 evaluation.
+ Range (min ... max):  376.300 μs ... 59.363 ms   GC (min ... max):  0.00% ... 97.57%
+ Time  (median):     436.200 μs               GC (median):     0.00%
+ Time  (mean ± σ):   607.541 μs ±  1.482 ms   GC (mean ± σ):  16.21% ±  7.21%
+
+  ▁█▁                                                           
+  ███▅▄▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▂
+  376 μs          Histogram: frequency by time         1.17 ms <
+
+ Memory estimate: 265.71 KiB, allocs estimate: 4874.
+```
+
 
 Tramite ProfileView otteniamo un grafico in cui si ottiene la misurazione temporale di ogni singola riga di codice. 
 La larghezza delle barre mostra il tempo trascorso in ogni locazione di chiamata, 
@@ -80,7 +81,21 @@ il ciclo *for* che calcola l'intersezione della faccia sigma con le facce in *sp
 Quindi, applicando le suddette modifiche, si è raggiunto un tempo minimo di esecuzione
 inferiore di circa 20% dalla versione originale.
 
-![Benchmark della funzione modificata](assets/image6.png)
+```julia
+@benchmark frag_face2(Lar.Points(V),EV,FE,[2,3,4,5],2)
+
+BenchmarkTools.Trial: 9179 samples with 1 evaluation.
+ Range (min ... max):  297.300 μs ... 35.314 ms   GC (min ... max):  0.00% ... 97.50%
+ Time  (median):     376.200 μs               GC (median):     0.00%
+ Time  (mean ± σ):   540.377 μs ±  1.575 ms   GC (mean ± σ):  19.48% ±  6.66%
+
+   ▆█▄                                                          
+  ▄███▇▅▄▆▆▅▄▄▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▂▃▃▃▃▃▂▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▂
+  297 μs          Histogram: frequency by time          924 μs <
+
+ Memory estimate: 218.65 KiB, allocs estimate: 3873.
+```
+
 
 ![Grafico di ProfileView della funzione modificata](assets/image7.png)
 
@@ -95,9 +110,37 @@ esecuzione.
 
 ![Benchmark della funzione originale](assets/image8.png)
 
+```julia
+@benchmark merge_vertices(Lar.Points(V),Lar.ChainOp(EV),Lar.ChainOp(FE),1e-4)
+
+BenchmarkTools.Trial: 10000 samples with 1 evaluation.
+ Range (min ... max):  39.200 μs ...  13.339 ms   GC (min ... max):  0.00% ... 99.16%
+ Time  (median):     49.400 μs                GC (median):     0.00%
+ Time  (mean ± σ):   74.714 μs ± 368.686 μs   GC (mean ± σ):  18.01% ±  3.68%
+
+  ▄█▇▆▅▅▄▄▄▅▄▄▄▄▃▃▃▃▂▂▂▂▁▁▁▁ ▁  ▁   ▁▁▁▂▁▁▁▁▂▁▁▁▁▁▁▁ ▁         ▂
+  ████████████████████████████████████████████████████████▆█▆▇ █
+  39.2 μs       Histogram: log(frequency) by time       141 μs <
+
+ Memory estimate: 64.00 KiB, allocs estimate: 920.
+```
+
 Notiamo in seguito come vengono modificati i tempi dopo l'ottimizzazione.
 
-![Benchmark della funzione modificata](assets/image9.png)
+```julia
+@benchmark merge_vertices2(Lar.Points(V),Lar.ChainOp(EV),Lar.ChainOp(FE),1e-4)
+
+BenchmarkTools.Trial: 10000 samples with 1 evaluation.
+ Range (min ... max):  34.700 μs ... 94.229 ms   GC (min ... max):  0.00% ... 99.75%
+ Time  (median):     54.600 μs               GC (median):     0.00%
+ Time  (mean ± σ):   99.073 μs ±  1.576 ms   GC (mean ± σ):  27.47% ±  1.73%
+
+   █▅▁                                                         
+  ▅████▇▆▆▅▄▄▃▃▂▂▂▂▂▂▂▂▃▂▃▃▃▂▂▂▂▂▂▂▂▂▂▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁ ▂
+  34.7 μs         Histogram: frequency by time         218 μs <
+
+ Memory estimate: 56.56 KiB, allocs estimate: 779.
+```
 
 
 ### spatial_arrangement
@@ -106,17 +149,43 @@ la macro `@code_warntype`, quindi abbiamo stabilizzato i tipi delle variabili e 
 e frag_face, che vengono richiamate all'interno della funzione corrente, abbiamo ottenuto un codice che si comporta come una 
 versione più veloce del codice precedente risparmiando circa un 40% del tempo di esecuzione.
 
-![Benchmark della funzione originale](assets/image10.png)
+```julia
+@benchmark Lar.Arrangement.spatial_arrangement(Points(V),ChainOp(EV),ChainOp(FE),false)
+
+BenchmarkTools.Trial: 1551 samples with 1 evaluation.
+ Range (min ... max):  2.869 ms ... 7.011 ms   GC (min ... max):  0.00% ... 52.79%
+ Time  (median):     2.966 ms               GC (median):     0.00%
+ Time  (mean ± σ):   3.222 ms ±  846.503 μs   GC (mean ± σ):  6.52% ± 12.05%
+
+  █▆▅▃▄▃▁▁                                                    
+  ████████▆▄▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▅▆▅▃▃▁▃▅▄▁▁▁▄▃▄▁▁▃▁▁▁▁▃ █
+  2.87 ms      Histogram: log(frequency) by time     6.47 ms <
+
+ Memory estimate: 3.02 MiB, allocs estimate: 58808.
+```
 
 Notiamo in seguito come vengono modificati i tempi dopo l'ottimizzazione.
 
-![Benchmark della funzione modificata](assets/image11.png)
+```julia
+@benchmark spatial_arrangement(Points(V), ChainOp(EV), ChainOp(FE), false)
 
+BenchmarkTools.Trial: 2612 samples with 1 evaluation.
+ Range (min ... max):  1.661 ms ... 6.831 ms   GC (min ... max):  0.00% ... 60.79%
+ Time  (median):     1.732 ms               GC (median):     0.00%
+ Time  (mean ± σ):   1.911 ms ±  668.375 μs   GC (mean ± σ):  6.28% ± 11.05%
+
+  █▆▅▃▄▃▁▁                                                    
+  ████████▆▄▅▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▁▅▆▅▃▃▁▃▅▄▁▁▁▄▃▄▁▁▃▁▁▁▁▃ █
+  1.66 ms      Histogram: log(frequency) by time     5.26 ms <
+
+ Memory estimate: 1.59 MiB, allocs estimate: 28956.
+```
 
 ### Azioni Github
 Grazie all'utilizzo del libro *Hands-On Julia Programming*, in particolare il capitolo 13, si sono costruite diverse `Actions` di Github,
 le quali eseguono delle istruzioni specifiche quando Github rileva gli eventi di attivazione corrispondenti. 
 Ogni volta che c'è un nuovo `push` sul branch `master`, viene effettuata una simulazione per verificare che il modulo 
 `TGW3D.jl` venga correttamente aggiunto sui sistemi operativi Ubuntu (x86 e x64), Windows (x86 e x64) e macOS (x64). 
-Inoltre, tramite la libreria `Documenter.jl`, viene presa la documentazione del nostro progetto ed inserita sulla pagina di Github
+Inoltre, tramite la libreria `Documenter.jl`, viene creata la documentazione del nostro progetto, 
+tramite i `docstrings` presenti nel modulo TGW3D, ed è inserita sulla pagina di Github
 corrispondente.

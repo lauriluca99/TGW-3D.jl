@@ -1,16 +1,3 @@
-% Relazione LAR TGW 3D - Gruppo 8b
-% Luca Maria Lauricella; Valerio Marini;
-% \today
-
-Progetto relativo al Corso di Calcolo Parallelo e Distribuito del 
-Prof. Paoluzzi presso l'Università Roma Tre.
-
-Repository del progetto:
-https://github.com/lauriluca99/TGW-3D.jl
-
-Documentazione del progetto:
-https://lauriluca99.github.io/TGW-3D.jl
-
 # Introduzione Linear Algebraic Rappresentation:
 
 LAR è uno schema rappresentativo per modelli geometrici e topologici. Il

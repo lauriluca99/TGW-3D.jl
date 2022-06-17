@@ -292,10 +292,10 @@ Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
 # Output
 - `nFE::ChainOp`
 """
-function removeinnerloops(g, nFE)
+function removeinnerloops(g::Int64, nFE::ChainOp)
 	# optimized solution (to check): remove the last `g` rows
-	FE = Lar.cop2lar(nFE)
-	nFE = Lar.lar2cop(FE[1:end-g])
+	FE::Vector{Vector{Int64}} = Lar.cop2lar(nFE)
+	nFE::ChainOp = Lar.lar2cop(FE[1:end-g])
 end
 								
 								

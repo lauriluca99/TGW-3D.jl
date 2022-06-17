@@ -1,7 +1,7 @@
-[![Build](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Build.yml/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Build.yml)
+[![CI](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/CI.yml/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/CI.yml)
 [![Documentation](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Documentation.yml/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/Documentation.yml)
 [![Github Pages](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/pages/pages-build-deployment/badge.svg)](https://github.com/lauriluca99/TGW-3D.jl/actions/workflows/pages/pages-build-deployment)
-
+[![Codecov](https://codecov.io/gh/lauriluca99/TGW-3D.jl/branch/master/graph/badge.svg)](https://codecov.io/gh/lauriluca99/TGW-3D.jl)
 
 # LAR TGW 3D
 
