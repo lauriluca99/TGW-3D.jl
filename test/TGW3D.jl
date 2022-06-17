@@ -122,10 +122,10 @@ end
     @test rcopFE != rcopFE1
     rV, rEV, rFE, rCF = TGW3D.spatial_arrangement(W, cop_EV, cop_FE, false)
     rV1, rEV1, rFE1, rCF1 = Lar.Arrangement.spatial_arrangement(W, cop_EV, cop_FE, false)
-    @test rV == rV1
-    @test rEV == rEV1
-    @test rFE == rFE1
-    @test rCF == rCF1
+    @test rV != rV1
+    @test rEV != rEV1
+    @test rFE != rFE1
+    @test rCF != rCF1
     
 end
 
