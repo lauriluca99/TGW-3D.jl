@@ -35,3 +35,5 @@ E’ stata inoltre implementata qualche funzione di test per controllare il corr
 
 Il progetto offre ancora un possibile refactoring futuro, infatti come visto in precedenza potrebbe essere utile osservare i risultati che dovrebbe fornirci la parallelizzazione effettuata con la libreria CUDA.jl o magari migliorare funzioni per ottenere una minore complessità computazionale.
 
+
+![Grafo delle Dipendenze di spatial_arrangement.jl](images/media/image12.png)
