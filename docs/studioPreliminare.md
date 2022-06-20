@@ -11,6 +11,8 @@ https://github.com/lauriluca99/TGW-3D.jl
 Documentazione del progetto:
 https://lauriluca99.github.io/TGW-3D.jl
 
+\tableofcontents
+
 # Introduzione Linear Algebraic Rappresentation:
 
 LAR è uno schema rappresentativo per modelli geometrici e topologici. Il
@@ -25,7 +27,7 @@ topologico, viene utilizzato con un linguaggio di programmazione,
 anch’esso efficiente e veloce, come Julia, il quale permette di sfruttare tutte le
 sue potenzialità.
 
-## *Perché LAR?*
+## Perché LAR?
 
 Scegliamo LAR in quanto l’aumento della complessità dei dati geometrici
 e dei modelli topologici richiedono una migliore rappresentazione e un
@@ -49,7 +51,7 @@ Un complesso co-chain è la stessa cosa ma con direzioni opposte.
 In questo progetto si vuole ottimizzare e parallelizzare il codice dell'algoritmo TGW 3D presente
 nella libreria LinearAlgebraicRappresentation.jl 
 
-## **TGW 3D**
+## TGW 3D
 
 L’algoritmo Topological Gift Wrapping calcola le
 d-celle di una partizione di spazio generate da loro partendo da un

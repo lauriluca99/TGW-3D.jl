@@ -15,8 +15,8 @@ Lar = LinearAlgebraicRepresentation
             FE::ChainOp, 
             sp_idx::Vector{Int64})
 
-Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` rispetto le facce in `sp_idx`.
-
+Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle facce in `FE` 
+rispetto le facce in `sp_idx`.
 
 # Input
 -  `in_chan` 
@@ -25,6 +25,7 @@ Funziona che parallelizza, con l'utilizzo dei canali, la frammentazione delle fa
 -  `EV::ChainOp` 
 -  `FE::ChainOp`
 -  `sp_idx::Vector{Int64}`
+
 # Output
 - `V::Points`
 - `EV::ChainOp`
@@ -49,7 +50,7 @@ end
             V::Points, 
             EV::ChainOp, 
             FE::ChainOp, 
-	        sp_idx::Vector{Int64}, 
+	        sp_idx::Vector{Vector{Int64}}, 
             sigma::Int64)
 
 Prende la faccia `sigma` e la trasforma in 2D per poter calcolare le intersezioni con le facce in `sp_idx[sigma]`
@@ -59,12 +60,49 @@ ed ottenere la disposizione 2D della faccia `sigma`.
 -  `V::Points`
 -  `EV::ChainOp` 
 -  `FE::ChainOp`
--  `sp_idx::Vector{Int64}`
+-  `sp_idx::Vector{Vector{Int64}}`
 -  `sigma::Int64`
+
 # Output
 - `nV::Points`
 - `nEV::ChainOp`
 - `nFE::ChainOp`
+
+# Esempi
+
+```julia
+julia> nV, nEV, nFE = frag_face(V, EV, FE, [[2,3,4,5]], 2)
+
+([0.0 0.0 1.0; 0.0 1.0 1.0; 1.0 1.0 1.0; 1.0 0.0 1.0], sparse([1, 4, 1, 2, 2, 3, 3, 4], 
+[1, 1, 2, 2, 3, 3, 4, 4], Int8[-1, -1, 1, -1, 1, -1, 1, 1], 4, 4), sparse([1, 1, 1, 1], 
+[1, 2, 3, 4], Int8[1, 1, 1, -1], 1, 4))
+
+
+julia> nV
+
+4×3 Matrix{Float64}:
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+ 1.0  0.0  1.0
+
+
+julia> nEV
+
+4×4 SparseMatrixCSC{Int8, Int64} with 8 stored entries:
+ -1   1   ⋅  ⋅
+  ⋅  -1   1  ⋅
+  ⋅   ⋅  -1  1
+ -1   ⋅   ⋅  1
+
+
+julia> nFE
+
+1×4 SparseMatrixCSC{Int8, Int64} with 4 stored entries:
+ 1  1  1  -1
+
+
+```
 """
 function frag_face(V::Points, EV::ChainOp, FE::ChainOp, 
     sp_idx::Vector{Vector{Int64}}, sigma::Int64)
@@ -100,8 +138,9 @@ end
 """
     function filter_fn(face)
 
-    Funzione di filtro per la funzione `merge_vertices`. La funzione `filter_fn` prende in input una faccia
-    e restituisce `true` se i vertici della faccia non sono stati visitati, `false` altrimenti.
+Funzione di filtro per la funzione `merge_vertices`. La funzione `filter_fn` prende in input una faccia
+e restituisce `true` se i vertici della faccia non sono stati visitati, `false` altrimenti.
+
 # Input
 -  `face::Vector{Tuple{Int64, Int64}}` 
 
@@ -141,10 +180,66 @@ conto della congruenza ed otteniene nuove facce congruenti.
 -  `EV::ChainOp` 
 -  `FE::ChainOp`
 -  `err=1e-4`
+
 # Output
 - `nV::Points`
 - `nEV::ChainOp`
 - `nFE::ChainOp`
+
+# Esempi
+
+```julia
+julia> nV, nEV, nFE = merge_vertices(V, EV, FE)
+
+([0.0 0.0 0.0; 0.0 1.0 0.0; … ; 1.0 1.0 1.0; 1.0 0.0 1.0], sparse([1, 4, 5, 1, 2, 6, 2, 3, 7, 3  
+…  12, 6, 9, 10, 7, 10, 11, 8, 11, 12], [1, 1, 1, 2, 2, 2, 3, 3, 3, 4  …  5, 6, 6, 6, 7, 7, 7, 
+8, 8, 8], Int8[-1, -1, -1, 1, -1, -1, 1, -1, -1, 1  …  -1, 1, 1, -1, 1, 1, -1, 1, 1, 1], 12, 8), 
+sparse([1, 3, 1, 4, 1, 5, 1, 6, 3, 6  …  5, 6, 2, 3, 2, 4, 2, 5, 2, 6], [1, 1, 2, 2, 3, 3, 4, 4, 
+5, 5  …  8, 8, 9, 9, 10, 10, 11, 11, 12, 12], Int8[1, -1, 1, -1, 1, -1, -1, 1, 1, -1  …  -1, 1, 
+-1, 1, -1, 1, -1, 1, 1, -1], 6, 12))
+
+
+julia> nV
+
+8×3 Matrix{Float64}:
+ 0.0  0.0  0.0
+ 0.0  1.0  0.0
+ 1.0  1.0  0.0
+ 1.0  0.0  0.0
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+ 1.0  0.0  1.0
+
+
+julia> nEV
+
+12×8 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ -1   1   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅  -1   1   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅  -1   1   ⋅   ⋅   ⋅  ⋅
+ -1   ⋅   ⋅   1   ⋅   ⋅   ⋅  ⋅
+ -1   ⋅   ⋅   ⋅   1   ⋅   ⋅  ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   1   ⋅  ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅   1  ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  1
+  ⋅   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1   1  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  -1  1
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅   ⋅  1
+
+
+julia> nFE
+
+6×12 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+  1   1   1  -1   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  -1  -1  -1   1
+ -1   ⋅   ⋅   ⋅   1  -1   ⋅   ⋅   1   ⋅   ⋅   ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   1  -1   ⋅   ⋅   1   ⋅   ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅   1  -1   ⋅   ⋅   1   ⋅
+  ⋅   ⋅   ⋅   1  -1   ⋅   ⋅   1   ⋅   ⋅   ⋅  -1
+
+```
 """
 function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
     vertsnum = size(V, 1)
@@ -198,8 +293,8 @@ function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
         etuple2idx[nedges[ei]] = ei
     end
     
-    #questo ciclo può essere parallelizzato ma non cambia il tempo per un numero di edge piccolo
-    @async for e in 1:nedgenum 
+    #questo ciclo non può essere parallelizzato
+    for e in 1:nedgenum 
         v1,v2 = findnz(nEV[e,:])[1]
         nEV[e,v1] = -1; nEV[e,v2] = 1
     end
@@ -215,8 +310,8 @@ function merge_vertices(V::Points, EV::ChainOp, FE::ChainOp, err=1e-4)
     nfacenum = length(nfaces)
     nFE = spzeros(Int8, nfacenum, size(nEV, 1))
  
-    @async for fi in 1:nfacenum
-        @async for edge in nfaces[fi]
+    for fi in 1:nfacenum
+        for edge in nfaces[fi]
             ei = etuple2idx[Tuple{Int, Int}(sort(collect(edge)))]
             nFE[fi, ei] = sign(edge[2] - edge[1])
         end
@@ -248,6 +343,59 @@ Richiama le funzioni `frag_face` e `merge_vertices' per ritornare i nuovi vertic
 - `rV::Points`
 - `rEV::ChainOp`
 - `rFE::ChainOp`
+
+# Esempi
+```julia
+julia> rV, rEV, rFE = spatial_arrangement_1(Points(V), ChainOp(EV), ChainOp(FE))
+
+([0.0 0.0 0.0; 0.0 1.0 0.0; … ; 1.0 1.0 1.0; 1.0 0.0 1.0], sparse([1, 4, 9, 1, 2,
+10, 2, 3, 11, 3  …  9, 5, 6, 10, 6, 7, 11, 7, 8, 12], [1, 1, 1, 2, 2, 2, 3, 3, 3,
+4  …  5, 6, 6, 6, 7, 7, 7, 8, 8, 8], Int8[-1, -1, -1, 1, -1, -1, 1, -1, -1, 1  …
+1, 1, -1, 1, 1, -1, 1, 1, 1, 1], 12, 8), sparse([1, 3, 1, 4, 1, 5, 1, 6, 2, 3  …
+2, 6, 3, 6, 3, 4, 4, 5, 5, 6], [1, 1, 2, 2, 3, 3, 4, 4, 5, 5  …  8, 8, 9, 9, 10,
+10, 11, 11, 12, 12], Int8[1, 1, 1, 1, 1, 1, -1, 1, 1, -1  …  -1, -1, -1, -1, 1,
+-1, 1, -1, 1, 1], 6, 12))
+
+
+julia> rV
+
+8×3 Matrix{Float64}:
+ 0.0  0.0  0.0
+ 0.0  1.0  0.0
+ 1.0  1.0  0.0
+ 1.0  0.0  0.0
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+ 1.0  0.0  1.0
+
+julia> rEV
+
+12×8 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ -1   1   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅  -1   1   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅  -1   1   ⋅   ⋅   ⋅  ⋅
+ -1   ⋅   ⋅   1   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1   1  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  -1  1
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅   ⋅  1
+ -1   ⋅   ⋅   ⋅   1   ⋅   ⋅  ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   1   ⋅  ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅   1  ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  1
+
+julia> rFE
+
+6×12 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ 1  1  1  -1   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+ ⋅  ⋅  ⋅   ⋅   1   1   1  -1   ⋅   ⋅   ⋅  ⋅
+ 1  ⋅  ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+ ⋅  1  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1  ⋅
+ ⋅  ⋅  1   ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1  1
+ ⋅  ⋅  ⋅   1   ⋅   ⋅   ⋅  -1  -1   ⋅   ⋅  1
+
+```
 """
 function spatial_arrangement_1(
     V::Points,
@@ -289,66 +437,91 @@ Il valore restituito ha `g` righe in meno rispetto all'input `nFE`.
 # Input
 -  `g::Int` 
 -  `nFE::ChainOp`
+
 # Output
 - `nFE::ChainOp`
+
+# Esempio
+
+```julia
+julia> nFE = removeinnerloops(2, FE)
+
+4×12 SparseMatrixCSC{Int8, Int64} with 16 stored entries:
+ 1  1  1  1  ⋅  ⋅  ⋅  ⋅  ⋅  ⋅  ⋅  ⋅
+ ⋅  ⋅  ⋅  ⋅  ⋅  ⋅  ⋅  ⋅  1  1  1  1
+ 1  ⋅  ⋅  ⋅  1  1  ⋅  ⋅  1  ⋅  ⋅  ⋅
+ ⋅  1  ⋅  ⋅  ⋅  1  1  ⋅  ⋅  1  ⋅  ⋅
+
+```
 """
-function removeinnerloops(g::Int64, nFE::ChainOp)
+function removeinnerloops(g::Int64, nFE::ChainOp)::ChainOp
 	# optimized solution (to check): remove the last `g` rows
 	FE::Vector{Vector{Int64}} = Lar.cop2lar(nFE)
 	nFE::ChainOp = Lar.lar2cop(FE[1:end-g])
 end
 								
-								
-"""
-    function face_angle(e::Int, f::Int)
-    
-Funzione che calcola l'angolo di una faccia `f` rispetto allo spigolo `e`.
-# Input
--  `e::Int` 
--  `f::Int`
-# Output
-- `angle::Matrix`
-"""
-function face_angle(e::Int, f::Int)
-
-    edge_vs = EV[e, :].nzind
-
-    t = findfirst(x->edge_vs[1] in x && edge_vs[2] in x, triangulated_faces[f])
-
-    v1 = normalize(V[edge_vs[2], :] - V[edge_vs[1], :])
-
-    if abs(v1[1]) > abs(v1[2])
-        invlen = 1. / sqrt(v1[1]*v1[1] + v1[3]*v1[3])
-        v2 = [-v1[3]*invlen, 0, v1[1]*invlen]
-    else
-        invlen = 1. / sqrt(v1[2]*v1[2] + v1[3]*v1[3])
-        v2 = [0, -v1[3]*invlen, v1[2]*invlen]
-    end
-
-    v3 = cross(v1, v2)
-
-    M = reshape([v1; v2; v3], 3, 3)
-
-    triangle = triangulated_faces[f][t]
-    third_v = setdiff(triangle, edge_vs)[1]
-    vs = V[[edge_vs..., third_v], :]*M
-
-    v = vs[3, :] - vs[1, :]
-    angle = atan(v[2], v[3])
-    return angle
-end
 
 """
+    minimal_3cycles(
+            V::Points,
+            EV::ChainOp,
+            FE::ChainOp)
+
+Funzione che ritorna una `ChainOp` di CF.
+
 # Input
 -  `V::Points`
 -  `EV::ChainOp` 
 -  `FE::ChainOp`
+
 # Output
-- `FC::ChainOp`
+- `CF::ChainOp`
 """
+
 function minimal_3cycles(V::Points, EV::ChainOp, FE::ChainOp)
 
 	triangulated_faces = Array{Any, 1}(undef, FE.m)
+
+    """
+        function face_angle(e::Int, f::Int)
+    
+    Funzione che calcola l'angolo di una faccia `f` rispetto allo spigolo `e`.
+
+    # Input
+    -  `e::Int` 
+    -  `f::Int`
+
+    # Output
+    - `angle::Matrix`
+    """
+    function face_angle(e::Int, f::Int)
+
+        edge_vs = EV[e, :].nzind
+
+        t = findfirst(x->edge_vs[1] in x && edge_vs[2] in x, triangulated_faces[f])
+
+        v1 = normalize(V[edge_vs[2], :] - V[edge_vs[1], :])
+
+        if abs(v1[1]) > abs(v1[2])
+            invlen = 1. / sqrt(v1[1]*v1[1] + v1[3]*v1[3])
+            v2 = [-v1[3]*invlen, 0, v1[1]*invlen]
+        else
+            invlen = 1. / sqrt(v1[2]*v1[2] + v1[3]*v1[3])
+            v2 = [0, -v1[3]*invlen, v1[2]*invlen]
+        end
+
+        v3 = cross(v1, v2)
+
+        M = reshape([v1; v2; v3], 3, 3)
+
+        triangle = triangulated_faces[f][t]
+        third_v = setdiff(triangle, edge_vs)[1]
+        vs = V[[edge_vs..., third_v], :]*M
+
+        v = vs[3, :] - vs[1, :]
+        angle = atan(v[2], v[3])
+        return angle
+    end
 
     #EF = FE'
     EF::ChainOp = convert(ChainOp, LinearAlgebra.transpose(FE))
@@ -372,17 +545,90 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale 3D.
 #### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
 		
-
 # Input
 -  `rV::Points` 
 -  `rcopEV::ChainOp` 
 -  `rcopFE::ChainOp`
 -  `multiproc::Bool=false`
+
 # Output
 -  `rV::Points` 
 -  `rcopEV::ChainOp` 
 -  `rcopFE::ChainOp`
+-  `rcopCF::ChainOp`
 -  `multiproc::Bool=false`
+
+# Esempi
+
+```julia
+julia> rV, rcopEV, rcopFE, rcopCF = spatial_arrangement_2(rV, rEV, rFE)
+
+([0.0 0.0 0.0; 0.0 1.0 0.0; … ; 1.0 1.0 1.0; 1.0 0.0 1.0], sparse([1, 4, 
+9, 1, 2, 10, 2, 3, 11, 3  …  9, 5, 6, 10, 6, 7, 11, 7, 8, 12], [1, 1, 1, 
+2, 2, 2, 3, 3, 3, 4  …  5, 6, 6, 6, 7, 7, 7, 8, 8, 8], Int8[-1, -1, -1, 
+1, -1, -1, 1, -1, -1, 1  …  1, 1, -1, 1, 1, -1, 1, 1, 1, 1], 12, 8), sparse(
+[1, 3, 1, 4, 1, 5, 1, 6, 2, 3  …  2, 6, 3, 6, 3, 4, 4, 5, 5, 6], [1, 
+1, 2, 2, 3, 3, 4, 4, 5, 5  …  8, 8, 9, 9, 10, 10, 11, 11, 12, 12], Int8[1, 
+1, 1, 1, 1, 1, -1, 1, 1, -1  …  -1, -1, -1, -1, 1, -1, 1, -1, 1, 1], 
+6, 12), sparse([1, 7, 2, 8, 3, 9, 4, 10, 5, 11, 6, 12], [1, 1, 2, 2, 3, 
+3, 4, 4, 5, 5, 6, 6], Int8[-1, 1, -1, 1, -1, 1, -1, 1, -1, 1, -1, 1], 12, 6))
+
+
+julia> rV
+8×3 Matrix{Float64}:
+ 0.0  0.0  0.0
+ 0.0  1.0  0.0
+ 1.0  1.0  0.0
+ 1.0  0.0  0.0
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+ 1.0  0.0  1.0
+
+
+julia> rcopEV
+
+12×8 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ -1   1   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅  -1   1   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅  -1   1   ⋅   ⋅   ⋅  ⋅
+ -1   ⋅   ⋅   1   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1   1  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  -1  1
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅   ⋅  1
+ -1   ⋅   ⋅   ⋅   1   ⋅   ⋅  ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   1   ⋅  ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅   1  ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  1
+
+
+julia> rcopFE
+
+6×12 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ 1  1  1  -1   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+ ⋅  ⋅  ⋅   ⋅   1   1   1  -1   ⋅   ⋅   ⋅  ⋅
+ 1  ⋅  ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+ ⋅  1  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1  ⋅
+ ⋅  ⋅  1   ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1  1
+ ⋅  ⋅  ⋅   1   ⋅   ⋅   ⋅  -1  -1   ⋅   ⋅  1
+
+julia> rcopCF
+
+12×6 SparseMatrixCSC{Int8, Int64} with 12 stored entries:
+ -1   ⋅   ⋅   ⋅   ⋅   ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1
+  1   ⋅   ⋅   ⋅   ⋅   ⋅
+  ⋅   1   ⋅   ⋅   ⋅   ⋅
+  ⋅   ⋅   1   ⋅   ⋅   ⋅
+  ⋅   ⋅   ⋅   1   ⋅   ⋅
+  ⋅   ⋅   ⋅   ⋅   1   ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   1
+```
 """
 function spatial_arrangement_2(
     rV::Points,
@@ -390,8 +636,8 @@ function spatial_arrangement_2(
     rcopFE::ChainOp, 
     multiproc::Bool=false)
 
-#rcopCF = Lar.build_copFC(rV, rcopEV, rcopFE)  ######
-rcopCF::ChainOp = minimal_3cycles(rV, rcopEV, rcopFE)
+#rcopCF = Lar.build_copFC(rV, rcopEV, rcopFE) #la funzione va in errore
+rcopCF::ChainOp = Lar.Arrangement.minimal_3cycles(rV, rcopEV, rcopFE)
 
 return rV, rcopEV, rcopFE, rcopCF
 end
@@ -412,18 +658,91 @@ La funzione ritorna la piena disposizione complessa come una lista di vertici V 
 
 #### Argomenti addizionali:
 - `multiproc::Bool`: Esegue la computazione in modalità parallela. Di Defaults a `false`.
-												
-												
+																			
 # Input
 -  `V::Points` 
 -  `copEV::ChainOp` 
 -  `copFE::ChainOp`
 -  `multiproc::Bool=false`
+
 # Output
 -  `rV::Points`
 -  `rEV::ChainOp`
 -  `rFE::ChainOp`
 -  `rCF::ChainOp` 
+
+# Esempi 
+
+```julia
+julia> rV, rEV, rFE, rCF = spatial_arrangement(Points(V), ChainOp(EV), ChainOp(FE))
+
+([0.0 0.0 0.0; 0.0 1.0 0.0; … ; 1.0 1.0 1.0; 1.0 0.0 1.0], sparse([1, 4, 9, 1, 2, 10,
+2, 3, 11, 3  …  9, 5, 6, 10, 6, 7, 11, 7, 8, 12], [1, 1, 1, 2, 2, 2, 3, 3, 3, 4  …  5,
+6, 6, 6, 7, 7, 7, 8, 8, 8], Int8[-1, -1, -1, 1, -1, -1, 1, -1, -1, 1  …  1, 1, -1, 1, 1,
+-1, 1, 1, 1, 1], 12, 8), sparse([1, 3, 1, 4, 1, 5, 1, 6, 2, 3  …  2, 6, 3, 6, 3, 4, 4, 5,
+5, 6], [1, 1, 2, 2, 3, 3, 4, 4, 5, 5  …  8, 8, 9, 9, 10, 10, 11, 11, 12, 12], Int8[1, 1,
+1, 1, 1, 1, -1, 1, 1, -1  …  -1, -1, -1, -1, 1, -1, 1, -1, 1, 1], 6, 12), sparse([1, 7,
+2, 8, 3, 9, 4, 10, 5, 11, 6, 12], [1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6], Int8[-1, 1, -1,
+1, -1, 1, -1, 1, -1, 1, -1, 1], 12, 6))
+
+
+julia> rV
+
+8×3 Matrix{Float64}:
+ 0.0  0.0  0.0
+ 0.0  1.0  0.0
+ 1.0  1.0  0.0
+ 1.0  0.0  0.0
+ 0.0  0.0  1.0
+ 0.0  1.0  1.0
+ 1.0  1.0  1.0
+ 1.0  0.0  1.0
+
+
+julia> rEV
+
+12×8 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ -1   1   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅  -1   1   ⋅   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅  -1   1   ⋅   ⋅   ⋅  ⋅
+ -1   ⋅   ⋅   1   ⋅   ⋅   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1   1  ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  -1  1
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅   ⋅  1
+ -1   ⋅   ⋅   ⋅   1   ⋅   ⋅  ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   1   ⋅  ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅   1  ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  1
+
+
+julia> rFE
+
+6×12 SparseMatrixCSC{Int8, Int64} with 24 stored entries:
+ 1  1  1  -1   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅   ⋅  ⋅
+ ⋅  ⋅  ⋅   ⋅   1   1   1  -1   ⋅   ⋅   ⋅  ⋅
+ 1  ⋅  ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1   ⋅  ⋅
+ ⋅  1  ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1   1  ⋅
+ ⋅  ⋅  1   ⋅   ⋅   ⋅  -1   ⋅   ⋅   ⋅  -1  1
+ ⋅  ⋅  ⋅   1   ⋅   ⋅   ⋅  -1  -1   ⋅   ⋅  1
+
+
+julia> rCF
+
+12×6 SparseMatrixCSC{Int8, Int64} with 12 stored entries:
+ -1   ⋅   ⋅   ⋅   ⋅   ⋅
+  ⋅  -1   ⋅   ⋅   ⋅   ⋅
+  ⋅   ⋅  -1   ⋅   ⋅   ⋅
+  ⋅   ⋅   ⋅  -1   ⋅   ⋅
+  ⋅   ⋅   ⋅   ⋅  -1   ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅  -1
+  1   ⋅   ⋅   ⋅   ⋅   ⋅
+  ⋅   1   ⋅   ⋅   ⋅   ⋅
+  ⋅   ⋅   1   ⋅   ⋅   ⋅
+  ⋅   ⋅   ⋅   1   ⋅   ⋅
+  ⋅   ⋅   ⋅   ⋅   1   ⋅
+  ⋅   ⋅   ⋅   ⋅   ⋅   1
+```
 
 """
 function spatial_arrangement(

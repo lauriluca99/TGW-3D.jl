@@ -108,8 +108,6 @@ la macro `@async` che, parallelizzando le operazioni di calcolo, ci ha permesso 
 esecuzione.
 
 
-![Benchmark della funzione originale](assets/image8.png)
-
 ```julia
 @benchmark merge_vertices(Lar.Points(V),Lar.ChainOp(EV),Lar.ChainOp(FE),1e-4)
 
