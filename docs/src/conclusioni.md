@@ -1,0 +1,2 @@
+In conclusione è possibile ritenere ottimizzato il codice del progetto in quanto sono stati riportati risulatati positivi rispettando gli obiettivi prefissati.
+Il progetto offre ancora un possibile refactoring futuro, infatti come visto in precedenza potrebbe essere utile osservare i risultati che dovrebbe fornirci la parallelizzazione effettuata con la libreria CUDA.jl o magari migliorare funzioni per ottenere una minore complessità computazionale.
