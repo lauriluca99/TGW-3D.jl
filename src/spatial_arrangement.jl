@@ -31,7 +31,8 @@ rispetto le facce in `sp_idx`.
 - `EV::ChainOp`
 """
 function frag_face_channel(in_chan, out_chan, V::Points, EV::ChainOp, FE::ChainOp, sp_idx::Vector{Int64})
-    run_loop = true
+    #bug nella funzione che cicla ad infinito
+    "run_loop = true
     while run_loop 
         
         sigma = take!(in_chan)
@@ -41,7 +42,7 @@ function frag_face_channel(in_chan, out_chan, V::Points, EV::ChainOp, FE::ChainO
         else
             run_loop = false
         end
-    end
+    end"
     return V,EV
 end
 

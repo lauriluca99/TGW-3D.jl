@@ -14,11 +14,15 @@ makedocs(
     pages = [
         "README.md",
 		"Introduzione a LAR" => "intro.md",
+		"Grafo delle Dipendenze" => "grafo.md",
         "Riferimenti API" => "index.md",
 		"Relazioni" => [
             "Studio Preliminare" => "studioPreliminare.md",
-			"Studio Esecutivo" => "studioEsecutivo.md"
-			]
+			"Studio Esecutivo" => "studioEsecutivo.md",
+			"Studio Definitivo" => "studioDefinitivo.md"
+			],
+		"Esempio" => "esempio.md",
+		"Conclusioni" => "conclusioni.md"
         ]
     )
 
