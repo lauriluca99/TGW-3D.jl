@@ -119,6 +119,11 @@ end
     @test mx[2,1]== 1
 end
 
+@testset "loop interni" begin
+    @test TGW3D.removeinnerloops(3, cop_FE).m == 9
+    @test TGW3D.removeinnerloops(1, cop_FE).m == 11
+end
+
 # test per verificare la consistenza dei risultati
 @testset "test spatial_arrangement" begin
     rV, rcopEV, rcopFE = TGW3D.spatial_arrangement_1(W, cop_EV, cop_FE) 
