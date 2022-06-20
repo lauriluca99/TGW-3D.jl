@@ -25,12 +25,12 @@ EV, FE, CF.
 Si occupa del processo di frammentazione delle facce per l’utilizzo del
 planar arrangement.
 
-1.  <u>compute\_FV:</u>
+1.  compute\_FV:
 
 > Ritorna l’array FV di tipo Lar.Cells dal prodotto di due array sparsi
 > in input di tipo Lar.ChainOp.
 
-2.  <u>spaceindex:</u>
+2.  spaceindex:
 
 > Dato un modello geometrico, calcola le intersezioni tra i bounding
 > box. Nello specifico, la funzione calcola le 1-celle e il loro
@@ -45,17 +45,17 @@ planar arrangement.
 > Infine, si eliminano le intersezioni di ogni bounding box con loro
 > stessi.
 
-3.  <u>frag\_face:</u>
+3.  frag\_face:
 
 > Effettua la trasformazione in 2D delle facce fornite come parametro
 > sigma, dopo di che ogni faccia sigma si interseca con le facce
 > Presenti in sp\_index sempre fornito come parametro della funzione.
 
-4.  <u>skel\_merge:</u>
+4.  skel\_merge:
 
 > Effettua l’unione di due scheletri che possono avere 1 o 2 dimensioni.
 
-5.  <u>merge\_vertices:</u>
+5.  merge\_vertices:
 
 > Effettua l’unione dei vertici, dei lati e delle facce vicine.
 
@@ -64,28 +64,28 @@ planar arrangement.
 Calcola le componenti biconnesse del grafo EV rappresenato da bordi,
 ovvero coppie di vertici.
 
-1.  <u>an\_edge:</u>
+1.  an\_edge:
 
 > Funzione che, dato in input un punto, prende un lato connesso ad esso.
 
-2.  <u>get\_head:</u>
+2.  get\_head:
 
 > Funzione che, dato in input un lato e la coda, fornisce la testa
 
-3.  <u>v\_to\_vi:</u>
+3.  v\_to\_vi:
 
 > Funzione che, dato un vertice in input, ritorna falso se la prima
 > occerrenza della matrice è pari a 0 oppure ritorna il valore trovato.
 
-4.  <u>push!:</u>
+4.  push!:
 
 > Inserisce uno o più oggetti nella matrice.
 
-5.  <u>pop!:</u>
+5.  pop!:
 
 > Rimuove l’ultimo oggetto nella matrice e lo ritorna.
 
-6.  <u>sort:</u>
+6.  sort:
 
 > Ordina la matrice e ne ritorna una copia.
 
@@ -94,12 +94,12 @@ ovvero coppie di vertici.
 Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 3D.
 
-1.  <u>minimal\_3cycles:</u>
+1.  minimal\_3cycles:
 
 > Funzione che riporta i parametri dati in input in 3 dimensioni e
 > calcola le nuove celle adiacenti per estendere i bordi della figura
 > geometrica. Infine ritorna la matrice sparsa tridimensionale.
 
-2.  <u>build\_copFC:</u>
+2.  build\_copFC:
 
 > Funzione alternativa alla precedente.
