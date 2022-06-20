@@ -1,18 +1,3 @@
-% Relazione LAR TGW 3D - Gruppo 8b
-% Luca Maria Lauricella; Valerio Marini;
-% \today
-
-Progetto relativo al Corso di Calcolo Parallelo e Distribuito del 
-Prof. Paoluzzi presso l'Università Roma Tre.
-
-Repository del progetto:
-https://github.com/lauriluca99/TGW-3D.jl
-
-Documentazione del progetto:
-https://lauriluca99.github.io/TGW-3D.jl
-
-\tableofcontents
-
 # Studio Definitivo
 
 Giunti nella fase finale del progetto è stata ottenuta una nuova versione del codice nel quale è stato ottimizzato e parallelizzato ove possibile anche servendoci delle macro offerte da Julia (ad es. Thread.@spawn, @sync, @async). Inoltre sono state eliminate varie ridondanze del codice per ottenere una miglior eseguibilità e leggibilità, talvolta anche intere sotto funzioni. 

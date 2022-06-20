@@ -168,7 +168,7 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 > Funzione alternativa alla precedente.
 
 
-# Studio esecutivo
+# Studio Esecutivo
 
 Nello studio esecutivo abbiamo analizzato il codice nei notebooks cercando delle possibili 
 ottimizzazioni. Non è stato possibile ottimizzare tutte le funzioni, infatti le principali
@@ -359,7 +359,7 @@ tramite i `docstrings` presenti nel modulo TGW3D, ed è inserita sulla pagina di
 corrispondente.
 
 
-# Studio definitivo
+# Studio Definitivo
 
 
 Giunti nella fase finale del progetto è stata ottenuta una nuova versione del codice nel quale è stato ottimizzato e parallelizzato ove possibile anche servendoci delle macro offerte da Julia (ad es. Thread.@spawn, @sync, @async). Inoltre sono state eliminate varie ridondanze del codice per ottenere una miglior eseguibilità e leggibilità, talvolta anche intere sotto funzioni. 
@@ -382,6 +382,6 @@ E’ stata inoltre implementata qualche funzione di test per controllare il corr
 
 Il progetto offre ancora un possibile refactoring futuro, infatti come visto in precedenza potrebbe essere utile osservare i risultati che dovrebbe fornirci la parallelizzazione effettuata con la libreria CUDA.jl o magari migliorare funzioni per ottenere una minore complessità computazionale.
 
-![Grafo delle Dipendenze di spatial_arrangement.jl](images/media/image12.png)
+![Grafo delle Dipendenze aggiornato di spatial_arrangement.jl](images/media/image12.png)
 
 
