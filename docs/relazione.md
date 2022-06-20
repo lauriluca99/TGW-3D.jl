@@ -168,7 +168,7 @@ Effettua la ricostruzione delle facce permettendo il wrapping spaziale
 > Funzione alternativa alla precedente.
 
 
-# Studio esecutivo
+# Studio Esecutivo
 
 Nello studio esecutivo abbiamo analizzato il codice nei notebooks cercando delle possibili 
 ottimizzazioni. Non è stato possibile ottimizzare tutte le funzioni, infatti le principali
@@ -359,4 +359,4 @@ tramite i `docstrings` presenti nel modulo TGW3D, ed è inserita sulla pagina di
 corrispondente.
 
 
-# Studio definitivo
+# Studio Definitivo

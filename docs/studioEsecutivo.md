@@ -13,7 +13,7 @@ https://lauriluca99.github.io/TGW-3D.jl
 
 \tableofcontents
 
-# Studio esecutivo
+# Studio Esecutivo
 
 Nello studio esecutivo abbiamo analizzato il codice nei notebooks cercando delle possibili 
 ottimizzazioni. Non è stato possibile ottimizzare tutte le funzioni, infatti le principali
