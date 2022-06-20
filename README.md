@@ -8,6 +8,12 @@
 Progetto 8b del corso di Calcolo Parallelo e Distribuito erogato durante l'anno accademico 2021/2022
 presso il Dipartimento di Ingegneria Informatica dell'Università Roma Tre.
 
+| Nome| Matricola | E-mail | 
+|:---|:---|:---|
+|Luca Maria Lauricella |519997|luc.lauricella1@stud.uniroma3.it|
+|Valerio Marini |512489|val.marini9@stud.uniroma3.it|
+
+
 ### Membri del team
 
 <table>
