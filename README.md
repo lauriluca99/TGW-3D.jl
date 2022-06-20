@@ -8,7 +8,5 @@
 Progetto 8b del corso di Calcolo Parallelo e Distribuito erogato durante l'anno accademico 2021/2022
 presso il Dipartimento di Ingegneria Informatica dell'Università Roma Tre.
 
-## Membri del team:
-Luca Maria Lauricella
+### Membri del team
 
-Valerio Marini
