@@ -8,11 +8,9 @@
 Progetto 8b del corso di Calcolo Parallelo e Distribuito erogato durante l'anno accademico 2021/2022
 presso il Dipartimento di Ingegneria Informatica dell'Università Roma Tre.
 
-| Nome| Matricola | E-mail | 
-|:---|:---|:---|
-|Luca Maria Lauricella |519997|luc.lauricella1@stud.uniroma3.it|
-|Valerio Marini |512489|val.marini9@stud.uniroma3.it|
-
+## Documentazione 
+La documentazione del progetto è disponibile al seguente link:
+https://lauriluca99.github.io/TGW-3D.jl/
 
 ### Membri del team
 
@@ -35,3 +33,7 @@ presso il Dipartimento di Ingegneria Informatica dell'Università Roma Tre.
 </tr>
 </table>
 
+| Nome| Matricola | E-mail | 
+|:---|:---|:---|
+|Luca Maria Lauricella |519997|luc.lauricella1@stud.uniroma3.it|
+|Valerio Marini |512489|val.marini9@stud.uniroma3.it|
