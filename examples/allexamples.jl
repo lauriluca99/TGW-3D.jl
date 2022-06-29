@@ -9,6 +9,7 @@ function allexamples()
     include("./EsempioE.jl")
     include("./two.jl")
     include("./corner.jl")
+    include("./randomcubes.jl")
 end
 
 allexamples()
