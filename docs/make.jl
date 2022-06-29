@@ -21,7 +21,10 @@ makedocs(
 			"Studio Esecutivo" => "studioEsecutivo.md",
 			"Studio Definitivo" => "studioDefinitivo.md"
 			],
-		"Esempio" => "esempio.md",
+		"Esempi" => [ 
+		"corner.jl" => "esempio.md",
+		"randomcubes.jl" => "randomcubes.md"
+		],
 		"Conclusioni" => "conclusioni.md"
         ]
     )
